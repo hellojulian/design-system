@@ -18,7 +18,7 @@ Each Figma variable has a direct counterpart in CSS, so there's no confusion. Th
 <ul>
   <li>Website: www.design-system.com</li>
   <li>Figma Library: https://www.figma.com/community/file/1338456115232271694</li>
-  <li>Storybook: https://functional-ui.github.io/design-system</li>
+  <li>Storybook: https://hellojulian.github.io/design-system</li>
   <li>Github: www.github.com/functional-ui/design-system</li>
   <li>Npm: www.npmjs.com/package/design-system</li>
 </ul>
