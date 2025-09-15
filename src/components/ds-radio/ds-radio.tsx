@@ -2,7 +2,7 @@ import React from 'react';
 import { prefix } from '../prefix';
 import classnames from 'classnames';
 
-export interface DsRadioProps {
+export interface dsRadioProps {
   checked?: boolean
   disabled?: boolean
   label?: string
@@ -14,7 +14,7 @@ export interface DsRadioProps {
 
 const compPrefix = `${prefix}-radio`;
 
-export const DsRadio = (props: DsRadioProps) => {
+export const DsRadio = (props: dsRadioProps) => {
   const [focused, setFocused] = React.useState(false);
   const ref = React.useRef<HTMLInputElement>(null);
   const inputId = React.useMemo(() => `${compPrefix}-input-${Math.random().toString(36).substring(7)}`, []);
@@ -23,7 +23,7 @@ export const DsRadio = (props: DsRadioProps) => {
   const indicatorClassNames = classnames(
     `${compPrefix}-indicator`,
     props.className,
-    props.checked ? 'checked' : ''
+    props.checked ? 'checked' : '',
   );
 
   const classNames = classnames(
@@ -60,6 +60,4 @@ export const DsRadio = (props: DsRadioProps) => {
   );
 };
 
-// Backward compatibility export
 export const dsRadio = DsRadio;
-export type dsRadioProps = DsRadioProps;

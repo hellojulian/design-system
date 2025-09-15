@@ -30,7 +30,7 @@ jobs:
         cache: 'yarn'
         
     - name: Install dependencies
-      run: yarn install --frozen-lockfile
+      run: yarn install --frozen-lockfile --network-timeout 100000
       
     - name: Build Storybook
       run: yarn storybook:build

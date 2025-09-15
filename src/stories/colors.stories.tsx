@@ -192,21 +192,31 @@ const redColors = [
 export const ColorPalette: Story = {
   render: () => (
     <div style={{ 
-      display: 'grid', 
-      gridTemplateColumns: 'repeat(7, 1fr)', 
-      gap: '16px',
-      maxWidth: '1000px',
-      margin: '0 auto',
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      width: '100vw',
+      height: '100vh',
+      backgroundColor: 'var(--ds-color-background-default)',
       padding: '20px',
-      paddingTop: '700px'
+      boxSizing: 'border-box',
+      overflow: 'auto'
     }}>
-      <ColorColumn title="Neutral" colors={neutralColors} />
-      <ColorColumn title="Blue" colors={blueColors} />
-      <ColorColumn title="Purple" colors={purpleColors} />
-      <ColorColumn title="Green" colors={greenColors} />
-      <ColorColumn title="Yellow" colors={yellowColors} />
-      <ColorColumn title="Brown" colors={brownColors} />
-      <ColorColumn title="Red" colors={redColors} />
+      <div style={{ 
+        display: 'grid', 
+        gridTemplateColumns: 'repeat(7, 1fr)', 
+        gap: '16px',
+        maxWidth: '1000px',
+        margin: '0 auto'
+      }}>
+        <ColorColumn title="Neutral" colors={neutralColors} />
+        <ColorColumn title="Blue" colors={blueColors} />
+        <ColorColumn title="Purple" colors={purpleColors} />
+        <ColorColumn title="Green" colors={greenColors} />
+        <ColorColumn title="Yellow" colors={yellowColors} />
+        <ColorColumn title="Brown" colors={brownColors} />
+        <ColorColumn title="Red" colors={redColors} />
+      </div>
     </div>
   ),
   name: 'Color Palette',

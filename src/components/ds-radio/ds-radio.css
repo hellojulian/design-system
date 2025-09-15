@@ -13,7 +13,7 @@
   outline: 2px solid;
   outline-color: var(--ds-color-state-focus);
   color: var(--ds-color-state-focus);
-  outline-offset: 0.2em;
+  outline-offset: 2px;
 }
 
 .ds-radio::after {

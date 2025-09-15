@@ -123,31 +123,31 @@
 }
 
 .ds-button.ds-button--hierarchy-secondary {
-  background-color: #ffffff !important;
-  border: 1px solid #A689FA !important;
+  background-color: var(--ds-color-button-secondary-bg-neutral) !important;
+  border: 1px solid var(--ds-color-button-secondary-border-neutral) !important;
   border-radius: var(--ds-radius-round) !important;
 }
 
 .ds-button.ds-button--action-neutral.ds-button--hierarchy-secondary {
-  border-color: #A689FA !important;
+  border-color: var(--ds-color-button-secondary-border-neutral) !important;
   color: var(--ds-disableable-color-foreground-default);
-  background-color: #ffffff !important;
+  background-color: var(--ds-color-button-secondary-bg-neutral) !important;
   border-radius: var(--ds-radius-round) !important;
   border-width: 1px !important;
   border-style: solid !important;
 }
 
 .ds-button.ds-button--action-success.ds-button--hierarchy-secondary {
-  border-color: var(--ds-disableable-color-button-secondary-border-success);
+  border-color: var(--ds-color-button-secondary-border-success);
   color: var(--ds-disableable-color-foreground-success);
-  background-color: var(--ds-disableable-color-button-secondary-bg-success);
+  background-color: var(--ds-color-button-secondary-bg-success);
   border-radius: var(--ds-radius-round) !important;
 }
 
 .ds-button.ds-button--action-destructive.ds-button--hierarchy-secondary {
-  border-color: var(--ds-disableable-color-button-secondary-border-destructive);
+  border-color: var(--ds-color-button-secondary-border-destructive);
   color: var(--ds-disableable-color-foreground-danger);
-  background-color: var(--ds-disableable-color-button-secondary-bg-destructive);
+  background-color: var(--ds-color-button-secondary-bg-destructive);
   border-radius: var(--ds-radius-round) !important;
 }
 
