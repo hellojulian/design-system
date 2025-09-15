@@ -22,15 +22,13 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: '18'
-        cache: 'yarn'
+        cache: 'npm'
         
     - name: Install dependencies
-      run: |
-        yarn cache clean
-        yarn install --network-timeout 100000
+      run: npm ci
       
     - name: Build Storybook
-      run: yarn storybook:build
+      run: npm run storybook:build
       
     - name: Setup Pages
       uses: actions/configure-pages@v4
