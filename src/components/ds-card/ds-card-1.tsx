@@ -246,7 +246,7 @@ export const DsCard1 = ({
                 }}
                 aria-label="Close modal"
               >
-                <CircleX style={{ width: '32px', height: '32px', color: 'black' }} />
+                <CircleX style={{ width: '32px', height: '32px', color: 'var(--ds-color-icon)' }} />
               </button>
             )}
           </div>
