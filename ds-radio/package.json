@@ -1,0 +1,4 @@
+{
+  "main": "../dist/ds-radio/index.js",
+  "types": "../dist/ds-radio/index.d.ts"
+}

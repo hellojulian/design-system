@@ -1,0 +1,113 @@
+.ds-text-input-wrapper {
+  display: flex;
+  min-width: 150px;
+  min-height: var(--ds-control-height-md);
+  flex-direction: column;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+
+.ds-text-input-container {
+  display: flex;
+  height: var(--ds-control-height-md);
+  align-items: center;
+  align-self: stretch;
+  border-radius: var(--ds-radius-md);
+  border: 1px solid var(--ds-disableable-color-divider-solid);
+  background: var(--ds-disableable-color-background-base);
+  padding: var(--ds-space-xs);
+  gap: var(--ds-space-xxs);
+}
+
+.ds-text-input-input-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.ds-text-input-input-container.has-prefix {
+  padding-left: 0;
+}
+
+.ds-text-input-input-container::after {
+  margin: -1px;
+  border-radius: var(--ds-radius-sm);
+}
+
+.ds-text-input-input {
+  padding: 0 var(--ds-space-md);
+  border: none;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  color: var(--ds-disableable-color-foreground-default);
+  font: var(--running-small-regular);
+}
+
+/* Remove global interactable styles from text input */
+.ds-text-input-input-container.ds-interactable:hover::after,
+.ds-text-input-input-container.ds-interactable:focus-visible,
+.ds-text-input-input-container.ds-interactable:active::after {
+  display: none !important;
+}
+
+/* Custom text input focus and hover states */
+.ds-text-input-input:focus-visible {
+  outline: 2px solid;
+  outline-color: var(--ds-color-state-focus);
+  outline-offset: 0px;
+  border-radius: var(--ds-radius-md) !important;
+}
+
+.ds-text-input-container:hover {
+  border-color: var(--ds-color-state-focus);
+}
+
+.ds-text-input-container:hover .ds-text-input-input:focus-visible {
+  outline: 2px solid;
+  outline-color: var(--ds-color-state-focus);
+  border-radius: 8px !important;
+}
+
+.ds-text-input-input::placeholder {
+  font: var(--running-small-regular);
+  color: var(--ds-disableable-color-foreground-softest);
+}
+
+.ds-text-input-clearable-icon-container {
+  display: flex;
+  width: var(--ds-space-xxlg);
+  height: var(--ds-space-xxlg);
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 24px;
+  width: 24px;
+  margin-right: var(--ds-space-xxs);
+}
+
+.ds-text-input-clearable-icon-container::after {
+  border-radius: var(--ds-radius-sm);
+  margin: -1px 0;
+}
+
+.ds-text-input-label {
+  color: var(--ds-color-foreground-soft);
+  font: var(--running-small-bold);
+}
+
+.ds-text-input-suffix {
+  margin-right: var(--ds-space-xs);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ds-text-input-prefix {
+  margin-left: var(--ds-space-xs);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

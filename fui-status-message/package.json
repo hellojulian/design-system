@@ -1,4 +1,0 @@
-{
-  "main": "../dist/fui-status-message/index.js",
-  "types": "../dist/fui-status-message/index.d.ts"
-}

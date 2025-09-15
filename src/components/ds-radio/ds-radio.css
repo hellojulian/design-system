@@ -1,0 +1,52 @@
+.ds-radio {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--ds-space-sm);
+  color: var(--ds-color-foreground-default);
+  position: relative;
+  width: fit-content;
+  border-radius: var(--ds-border-radius-round);
+}
+
+.ds-radio.ds-focused {
+  outline: 2px solid;
+  outline-color: var(--ds-color-state-focus);
+  color: var(--ds-color-state-focus);
+  outline-offset: 0.2em;
+}
+
+.ds-radio::after {
+  margin: -2px;
+  border-radius: var(--ds-border-radius-round);
+}
+
+.ds-radio-indicator {
+  position: relative;
+  border: 2px solid var(--ds-disableable-color-divider-solid);
+  border-radius: 50%;
+  height: 18px;
+  width: 18px;
+  background-color: var(--ds-disableable-color-background-base);
+}
+
+.ds-radio-indicator.checked {
+  border-color: var(--ds-disableable-color-foreground-primary);
+}
+
+.ds-radio-indicator.checked::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--ds-disableable-color-foreground-primary);
+}
+
+.ds-radio-label {
+  font: var(--running-small-bold);
+  color: var(--ds-disableable-color-foreground-default);
+  line-height: 100%;
+}

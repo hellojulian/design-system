@@ -1,15 +1,15 @@
-.fui-interactable,
-.fui-interactable * {
+.ds-interactable,
+.ds-interactable * {
   cursor: pointer;
   position: relative;
 }
 
-.fui-disabled *,
-.fui-disabled {
+.ds-disabled *,
+.ds-disabled {
   cursor: not-allowed;
 }
 
-[class*="fui"].fui-interactable::after {
+[class*="ds"].ds-interactable::after {
   position: absolute;
   top: 0;
   left: 0;
@@ -18,23 +18,24 @@
   content: "";
   background-color: transparent;
   pointer-events: none;
+  border-radius: 1000px;
 }
 
-[class*="fui"].fui-interactable:hover::after {
-  background-color: var(--fui-color-state-hover);
+[class*="ds"].ds-interactable:hover::after {
+  background-color: var(--ds-color-state-hover);
 }
 
-[class*="fui"].fui-interactable:active::after {
-  background-color: var(--fui-color-state-active);
+[class*="ds"].ds-interactable:active::after {
+  background-color: var(--ds-color-state-active);
 }
 
-[class*="fui"]:focus-visible {
-  outline: 2px solid var(--fui-color-state-focus);
+[class*="ds"]:focus-visible {
+  outline: 2px solid var(--ds-color-state-focus);
   outline-offset: 0.1em;
-  border-radius: var(--fui-radius-sm);
+  border-radius: 1000px;
 }
 
-.fui-disabled .fui-interactable::after,
-.fui-disabled.fui-interactable::after {
+.ds-disabled .ds-interactable::after,
+.ds-disabled.ds-interactable::after {
   display: none;
 }

@@ -1,0 +1,264 @@
+.ds-select {
+  min-width: var(--select-min-width);
+  font: var(--running-small-bold);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-sm);
+}
+
+.ds-select .ds-popover {
+  height: 100%;
+  box-shadow: none;
+  border: 0;
+  background: transparent;
+  color: unset;
+  border-radius: unset;
+}
+
+[class*="ds-select"]:focus-visible {
+  border-radius: var(--ds-radius-md);
+  outline-offset: -4px;
+}
+
+.ds-select-menu-option:focus-visible {
+  outline-offset: 4px;
+  border-radius: var(--ds-radius-xs);
+}
+
+.ds-select-menu-option .ds-interactable::after {
+  display: none;
+}
+
+.ds-select-native-element {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding: 0px var(--ds-space-md) 0px var(--ds-space-lg);
+  text-overflow: ellipsis;
+  border: 0;
+  height: calc(var(--ds-control-height-md) - 2px);
+  width: 100%;
+  color: var(--ds-disableable-color-foreground-default);
+  font: inherit;
+  background-color: var(--ds-disableable-color-background-base);
+}
+
+
+.ds-select-label {
+  display: flex;
+  align-items: flex-start;
+  align-self: stretch;
+  color: var(--ds-color-foreground-soft);
+  font: var(--running-small-bold);
+}
+
+.ds-select-container {
+  display: flex;
+  background-color: var(--ds-disableable-color-divider-soft);
+  gap: 1px;
+  min-height: 100%;
+  align-items: center;
+  align-self: stretch;
+  border-radius: var(--ds-radius-md);
+  border: 1px solid var(--ds-disableable-color-divider-solid) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.ds-select .ds-select-container,
+.ds-popover .ds-select-container {
+  border: 1px solid var(--ds-disableable-color-divider-solid) !important;
+}
+
+.ds-select-container::after {
+  margin: var(--ds-space-xs);
+  border-radius: var(--ds-radius-sm);
+  overflow: visible;
+}
+
+.ds-select-native-element-no-value {
+  opacity: 0;
+}
+
+
+.ds-select-placeholder {
+  font: var(--running-small-regular);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  color: var(--ds-color-foreground-softest);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  position: absolute;
+  height: calc(var(--ds-control-height-md) - 2px);
+  width: 100%;
+  background-color: var(--ds-disableable-color-background-base);
+  padding: 0px var(--ds-space-md) 0px var(--ds-space-lg);
+}
+
+.ds-select-chevron-container {
+  position: absolute;
+  display: flex;
+  width: 34px;
+  height: calc(var(--ds-control-height-md) - 2px);
+  right: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.ds-select-chevron-container [class*="ds-icon"] {
+  color: var(--ds-disableable-color-foreground-primary);
+}
+
+.ds-select-wrapper {
+  position: relative;
+  display: flex;
+  align-self: stretch;
+  align-items: flex-start;
+  overflow-x: auto;
+  flex: 1 0 0;
+  gap: 1px;
+}
+
+.ds-select .ds-select-clear-value-container::after,
+.ds-select .ds-select-custom-chevron-container::after,
+.ds-select .ds-select-wrapper::after,
+.ds-select .ds-select-clear-container::after {
+  top: 4px;
+  left: 4px;
+  bottom: 4px;
+  right: 4px;
+  border-radius: var(--ds-radius-sm);
+}
+
+.ds-select-menu .ds-select-menu-option::after {
+  border-radius: var(--ds-radius-sm);
+  width: calc(100% + var(--ds-space-lg));
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.ds-select-custom-chevron-container {
+  display: flex;
+  width: 34px;
+  flex-shrink: 0;
+  min-height: calc(var(--ds-control-height-md) - 2px);
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  align-self: stretch;
+  background-color: var(--ds-disableable-color-background-base);
+}
+
+.ds-select-custom-chevron-container [class*="ds-icon"],
+.ds-select-clear-container [class*="ds-icon"],
+.ds-select-clear-value-container [class*="ds-icon"] {
+  color: var(--ds-disableable-color-foreground-primary);
+}
+
+.ds-select-clear-container {
+  display: flex;
+  width: 34px;
+  height: calc(var(--ds-control-height-md) - 2px);
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-color: var(--ds-disableable-color-background-base);
+}
+
+.ds-select-menu {
+  display: flex;
+  padding: var(--ds-space-lg) var(--ds-space-xlg);
+  flex-direction: column;
+  align-items: flex-start;
+  background: var(--ds-color-background-base);
+  border-radius: var(--ds-radius-md);
+}
+
+.ds-select-menu-option {
+  display: flex;
+  height: 38px;
+  gap: var(--ds-space-sm);
+  align-items: center;
+  align-self: stretch;
+  font: var(--running-small-bold);
+  position: relative;
+}
+
+.ds-select-menu-option .ds-checkbox-wrapper {
+  width: 100%;
+}
+
+.ds-select-menu-option .ds-checkbox-wrapper::after {
+  margin: -6px;
+}
+
+.ds-select-menu-group {
+  display: flex;
+  flex-direction: column;
+  min-height: 38px;
+  align-self: stretch;
+}
+
+.ds-select-menu-group-label {
+  font: var(--running-small-bold);
+  color: var(--ds-color-foreground-softest);
+}
+
+.ds-select-menu-option-label {
+  display: flex;
+  flex: 1 0 0;
+  color: var(--ds-disableable-color-foreground-default);
+}
+
+.ds-select-value {
+  background: var(--ds-disableable-color-background-base);
+  position: relative;
+  display: flex;
+  padding-left: var(--ds-space-lg);
+  align-items: center;
+  gap: var(--ds-space-sm);
+  flex: 1 1 0;
+  justify-content: space-between;
+  color: var(--ds-disableable-color-foreground-default);
+  white-space: nowrap;
+  font: var(--running-small-bold);
+}
+
+.ds-select-value-label {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ds-select-clear-value-container {
+  display: flex;
+  min-width: 34px;
+  height: calc(var(--ds-control-height-md) - 2px);
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.ds-select-value-prefix-wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-space-sm);
+  height: calc(var(--ds-control-height-md) - 2px);
+  flex-shrink: 1;
+  width: 100%;
+}
+
+
+.ds-select-value-prefix-wrapper.ds-interactable::after {
+  left: -8px;
+  right: -8px;
+  top: 4px;
+  bottom: 4px;
+  border-radius: var(--ds-radius-sm);
+}
+
+.ds-select:not(.ds-select-fixed-height) .ds-select-wrapper {
+  flex-wrap: wrap;
+}

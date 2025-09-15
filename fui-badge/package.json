@@ -1,4 +1,0 @@
-{
-  "main": "../dist/fui-badge/index.js",
-  "types": "../dist/fui-badge/index.d.ts"
-}

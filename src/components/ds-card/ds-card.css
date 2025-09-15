@@ -1,0 +1,189 @@
+/* Card 1 - Search & Options - Now uses Tailwind utilities with design tokens */
+/* Legacy CSS removed in favor of Tailwind utilities */
+
+/* Card 2 - Sign Up Form */
+.ds-card-2-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-lg);
+  min-width: 300px;
+  max-width: 400px;
+}
+
+.ds-card-2-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-sm);
+  text-align: center;
+}
+
+.ds-card-2-title {
+  font: var(--running-medium-bold);
+  color: var(--ds-color-foreground-default);
+  margin: 0;
+  font-size: 24px;
+}
+
+.ds-card-2-description {
+  font: var(--running-small-regular);
+  color: var(--ds-color-foreground-soft);
+  margin: 0;
+}
+
+.ds-card-2-form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Card 3 - New Home Form */
+.ds-card-3-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-lg);
+  min-width: 350px;
+  max-width: 500px;
+}
+
+.ds-card-3-header {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--ds-space-md);
+}
+
+.ds-card-3-icon {
+  color: var(--ds-color-icon);
+  flex-shrink: 0;
+}
+
+.ds-card-3-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-xs);
+  flex: 1;
+}
+
+.ds-card-3-title {
+  font: var(--running-medium-bold);
+  color: var(--ds-color-foreground-default);
+  margin: 0;
+}
+
+.ds-card-3-description {
+  font: var(--running-small-regular);
+  color: var(--ds-color-foreground-soft);
+  margin: 0;
+}
+
+.ds-card-3-fields {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-md);
+}
+
+.ds-card-3-field-row {
+  display: flex;
+  gap: var(--ds-space-md);
+  align-items: flex-end;
+}
+
+.ds-card-3-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-xs);
+  flex: 1;
+}
+
+.ds-card-3-label {
+  font: var(--running-small-bold);
+  color: var(--ds-color-foreground-default);
+  margin: 0;
+}
+
+.ds-card-3-user-options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-xs);
+  margin-top: var(--ds-space-sm);
+}
+
+.ds-card-3-user-option {
+  display: flex;
+  align-items: center;
+  min-height: 38px;
+}
+
+.ds-card-3-warning {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-space-xs);
+  font: var(--running-small-regular);
+  color: var(--ds-color-warning);
+}
+
+/* Card 4 - Welcome Card */
+.ds-card-4-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-lg);
+  min-width: 350px;
+  max-width: 450px;
+}
+
+.ds-card-4-header {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-space-sm);
+}
+
+.ds-card-4-icon {
+  color: var(--ds-color-icon);
+  flex-shrink: 0;
+}
+
+.ds-card-4-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-xs);
+  flex: 1;
+}
+
+.ds-card-4-title {
+  font: var(--running-medium-bold);
+  color: var(--ds-color-foreground-default);
+  margin: 0;
+}
+
+.ds-card-4-message {
+  font: var(--running-small-regular);
+  color: var(--ds-color-foreground-soft);
+  margin: 0;
+}
+
+.ds-card-4-illustration {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+  border-radius: var(--ds-radius-lg);
+  padding: var(--ds-space-lg);
+  min-height: 200px;
+}
+
+.ds-card-4-illustration img {
+  max-width: 100%;
+  max-height: 160px;
+  border-radius: var(--ds-radius-md);
+}
+
+.ds-card-4-skip-option {
+  display: flex;
+  align-items: center;
+}
+
+/* General card styling */
+.ds-card {
+  background: var(--ds-color-background-base);
+  border-radius: var(--ds-radius-xxlg);
+  border: 1px solid var(--ds-color-divider-soft);
+  box-shadow: var(--ds-shadow-soft-elevation-1);
+}

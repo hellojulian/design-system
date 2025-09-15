@@ -1,4 +1,4 @@
-<img width="100%" alt="functional-ui-kit-cover" src="https://github.com/functional-ui/functional-ui-kit/assets/10652039/fa34ae50-ae9b-4af7-bcce-ca5393f496f0"/>
+<img width="100%" alt="design-system-cover" src="https://github.com/functional-ui/design-system/assets/10652039/fa34ae50-ae9b-4af7-bcce-ca5393f496f0"/>
 
 <ul>
   <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
@@ -7,20 +7,20 @@
   <img src="https://img.shields.io/badge/storybook-FF4785?style=for-the-badge&logo=storybook&logoColor=white" />
 </ul>
 
-# Welcome to Functional UI Kit
+# Welcome to Design System
 
-Functional UI Kit is a professionally crafted UI Kit for design & development teams, and individuals. We provide core components you would need in every project, focusing on accessibility, development experience and unified designer-developer experience.
+Design System is a professionally crafted UI Kit for design & development teams, and individuals. We provide core components you would need in every project, focusing on accessibility, development experience and unified designer-developer experience.
 
 We've made sure that Figma variables and CSS variables work together effortlessly. They share the same names, usage and inheritance structure. This isn't just an extra feature, **it's the core approach.**
 
 Each Figma variable has a direct counterpart in CSS, so there's no confusion. The design stays crystal clear as you move into the development phase.
 
 <ul>
-  <li>Website: www.functional-ui-kit.com</li>
+  <li>Website: www.design-system.com</li>
   <li>Figma Library: https://www.figma.com/community/file/1338456115232271694</li>
-  <li>Storybook: https://functional-ui.github.io/functional-ui-kit</li>
-  <li>Github: www.github.com/functional-ui/functional-ui-kit</li>
-  <li>Npm: www.npmjs.com/package/functional-ui-kit</li>
+  <li>Storybook: https://functional-ui.github.io/design-system</li>
+  <li>Github: www.github.com/functional-ui/design-system</li>
+  <li>Npm: www.npmjs.com/package/design-system</li>
 </ul>
 
 
@@ -28,13 +28,13 @@ Each Figma variable has a direct counterpart in CSS, so there's no confusion. Th
 ### Install
 Install the latest version from NPM.
 ```
-npm install functional-ui-kit
+npm install design-system
 ```
 
 ### Setup CSS
-Import the functional-ui-kit CSS file into your project in your css file
+Import the design-system CSS file into your project in your css file
 ```css
-@import 'functional-ui-kit/style';
+@import 'design-system/style';
 
 html {
   ...
@@ -42,22 +42,22 @@ html {
 you can also import the CSS file directly into your main React App file
 ```js
 import React, { Component } from 'react'
-import 'functional-ui-kit/style';
+import 'design-system/style';
 
 class App extends Component {
   ...
 ```
 
 ### Customizing Theme
-You can customize the theme by overriding the CSS variables. You can find the list of variables in the [theme file](https:\/\/github.com/functional-ui/functional-ui-kit/blob/main/src/css/theme-colors.css)
+You can customize the theme by overriding the CSS variables. You can find the list of variables in the [theme file](https:\/\/github.com/functional-ui/design-system/blob/main/src/css/theme-colors.css)
 ```css
 :root {
-  --fui-color-brand: var(--fui-color-green-700);
+  --ds-color-brand: var(--ds-color-green-700);
 }
 
 [data-theme="dark"],
 [data-theme="dark"] * {
-  --fui-color-brand: var(--fui-color-green-500);
+  --ds-color-brand: var(--ds-color-green-500);
 }
 ...
 ```
@@ -66,12 +66,12 @@ You can customize the theme by overriding the CSS variables. You can find the li
 You can use the components by importing them into your React App file
 ```js
 import React, { Component } from 'react'
-import { FuiBadge } from 'functional-ui-kit/fui-badge';
+import { dsBadge } from 'design-system/ds-badge';
 
 function App() {
   return (
     <div>
-      <FuiBadge label='label' />
+      <dsBadge label='label' />
     </div>
   );
 }

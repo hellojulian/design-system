@@ -1,4 +1,0 @@
-{
-  "main": "../dist/fui-select/index.js",
-  "types": "../dist/fui-select/index.d.ts"
-}

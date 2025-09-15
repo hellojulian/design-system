@@ -7,12 +7,12 @@ const getCssVarStringValue = (varName) => getComputedStyle(document.documentElem
 export default create({
   base: 'light',
   // Typography
-  fontBase: '"Inter", sans-serif',
+  fontBase: '"Inter Tight", sans-serif',
   fontCode: '"IBM Plex Mono", monospace',
 
-  brandTitle: 'Functional UI Kit',
-  brandUrl: 'https://functional-ui-kit.com/',
-  brandImage: 'https://framerusercontent.com/images/tVkfz6i8rL4iFXxNlvKJhZuM.png',
+  brandTitle: 'Design System',
+  brandUrl: 'https://www.figma.com/design/H183SNYASQn8z49YEbqRZj/Design-System?node-id=3782-13078&t=FwlQPmpcAZ1d2IMZ-1',
+  brandImage: '/Staute.png',
   brandTarget: '_self',
 
   //
@@ -22,8 +22,8 @@ export default create({
   // UI
   appBg: '#ddd',
   appContentBg: '#ffffff',
-  appBorderColor: getCssVarStringValue('--fui-color-divider-soft'),
-  appBorderRadius: getCssVarStringValue('--fui-border-radius-xlg'),
+  appBorderColor: getCssVarStringValue('--ds-color-neutral-50'),
+  appBorderRadius: getCssVarStringValue('--ds-border-radius-xlg'),
 
   // Text colors
   textColor: '#10162F',
@@ -36,8 +36,8 @@ export default create({
 
   // Form colors
   inputBg: '#ffffff',
-  inputBorder: getCssVarStringValue('--fui-color-divider-solid'),
+  inputBorder: getCssVarStringValue('--ds-color-divider-solid'),
   inputTextColor: '#10162F',
-  inputBorderRadius: getCssVarStringValue('--fui-border-radius-md'),
-  colorPrimary: getCssVarStringValue('--fui-color-brand'),
+  inputBorderRadius: getCssVarStringValue('--ds-border-radius-md'),
+  colorPrimary: getCssVarStringValue('--ds-color-brand'),
 });

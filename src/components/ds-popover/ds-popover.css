@@ -1,0 +1,52 @@
+.ds-popover-trigger,
+.ds-popover-trigger *,
+[data-state],
+[data-state] *,
+.ds-popover div,
+.ds-popover > div > div {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.ds-popover-trigger {
+  background: transparent !important;
+  padding: 0 !important;
+}
+
+.ds-popover {
+  box-shadow: 0px 0px 10px -2px rgba(0, 0, 0, 0.12);
+  border-radius: var(--ds-border-radius-lg);
+  border: 1px solid var(--ds-color-divider-soft);
+  background: var(--ds-color-background-base);
+  color: var(--ds-disableable-color-foreground-default);
+}
+
+.ds-popover-title {
+  padding: var(--ds-space-xlg);
+  border-bottom: 1px solid var(--ds-color-divider-soft);
+}
+
+.ds-popover-title-text {
+  font: var(--running-medium-bold);
+  font-family: var(--ds-font-family);
+}
+
+.ds-popover-title-dismiss {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ds-popover-footer {
+  padding: var(--ds-space-xxlg);
+  border-top: 1px solid var(--ds-color-divider-soft);
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--ds-space-md);
+}

@@ -1,0 +1,50 @@
+.ds-status-message {
+  font: var(--running-small-regular);
+  display: flex;
+  align-items: center;
+  gap: var(--ds-space-xs);
+  align-self: stretch;
+}
+
+.ds-status-message-success { 
+  color: var(--ds-color-status-success);
+}
+
+.ds-status-message-success [class*="ds-icon"] { 
+  color: var(--ds-color-status-success);
+}
+
+.ds-status-message-attention { 
+  color: var(--ds-color-status-attention);
+}
+
+.ds-status-message-invalid { 
+  color: var(--ds-color-status-danger);
+}
+
+.ds-status-message-invalid [class*="ds-icon"] { 
+  color: var(--ds-color-status-danger);
+}
+
+.ds-status-message-icon-wrapper-invalid {
+  width: 14px;
+  height: 14px;
+  border-radius: var(--ds-radius-round);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--ds-color-status-danger);
+  background-color: var(--ds-color-status-danger-subtle);
+}
+
+.ds-status-message-icon-wrapper-success {
+  width: 14px;
+  height: 14px;
+  border-radius: var(--ds-radius-round);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--ds-color-status-success);
+  background-color: var(--ds-color-status-success-subtle);
+  color: var(--ds-color-status-success);
+}

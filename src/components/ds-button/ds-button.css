@@ -1,0 +1,221 @@
+.ds-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  position: relative;
+  border-radius: 24px;
+  color: inherit;
+  font-family: var(--ds-font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 26px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.ds-button [class*="ds-icon"],
+.ds-button-icon,
+.ds-button-icon-right {
+  color: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ds-button svg {
+  display: block;
+}
+
+.ds-button-label-container {
+  width: 100%;
+}
+
+.ds-button--size-small .ds-button-label-container {
+  padding: 0 var(--ds-space-xxs);
+}
+
+.ds-button--size-medium .ds-button-label-container {
+  padding: 0 var(--ds-space-xs);
+}
+
+.ds-button--size-large .ds-button-label-container {
+  padding: 0 var(--ds-space-sm);
+}
+
+.ds-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.ds-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.ds-button:focus-visible {
+  outline: 2px solid var(--ds-color-state-focus);
+  outline-offset: 2px;
+  border-radius: var(--ds-border-radius-full);
+}
+
+/* Remove outline for buttons inside popovers */
+.ds-popover .ds-button:focus-visible,
+.ds-popover .ds-button:focus,
+.ds-popover .ds-button,
+[data-state] .ds-button:focus-visible,
+[data-state] .ds-button:focus,
+[data-state] .ds-button,
+[data-state="open"] .ds-button,
+[data-state="closed"] .ds-button,
+[data-state="open"] .ds-button:focus-visible,
+[data-state="closed"] .ds-button:focus-visible {
+  outline: none !important;
+  border: none !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+.ds-button--size-large {
+  height: 50px;
+  min-width: 44px;
+  padding: 0 16px;
+  font-size: 16px;
+  line-height: 26px;
+}
+
+.ds-button--size-medium {
+  padding: 0;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.ds-button--size-medium:not(.ds-button--hierarchy-tertiary) {
+  height: 32px;
+  min-width: 32px;
+  padding: 0 12px;
+}
+
+.ds-button--size-small {
+  height: 24px;
+  min-width: 24px;
+  padding: 0 8px;
+  font-size: 12px;
+  line-height: 16px;
+  gap: 4px;
+}
+
+.ds-button--hierarchy-primary {
+  color: white;
+  border: none;
+}
+
+.ds-button--action-neutral.ds-button--hierarchy-primary {
+  background: var(--ds-disableable-color-button-primary-bg-neutral);
+}
+
+.ds-button--action-success.ds-button--hierarchy-primary {
+  background-color: var(--ds-disableable-color-button-primary-bg-success);
+}
+
+.ds-button--action-destructive.ds-button--hierarchy-primary {
+  background-color: var(--ds-disableable-color-button-primary-bg-destructive);
+}
+
+.ds-button.ds-button--hierarchy-secondary {
+  background-color: #ffffff !important;
+  border: 1px solid #A689FA !important;
+  border-radius: var(--ds-radius-round) !important;
+}
+
+.ds-button.ds-button--action-neutral.ds-button--hierarchy-secondary {
+  border-color: #A689FA !important;
+  color: var(--ds-disableable-color-foreground-default);
+  background-color: #ffffff !important;
+  border-radius: var(--ds-radius-round) !important;
+  border-width: 1px !important;
+  border-style: solid !important;
+}
+
+.ds-button.ds-button--action-success.ds-button--hierarchy-secondary {
+  border-color: var(--ds-disableable-color-button-secondary-border-success);
+  color: var(--ds-disableable-color-foreground-success);
+  background-color: var(--ds-disableable-color-button-secondary-bg-success);
+  border-radius: var(--ds-radius-round) !important;
+}
+
+.ds-button.ds-button--action-destructive.ds-button--hierarchy-secondary {
+  border-color: var(--ds-disableable-color-button-secondary-border-destructive);
+  color: var(--ds-disableable-color-foreground-danger);
+  background-color: var(--ds-disableable-color-button-secondary-bg-destructive);
+  border-radius: var(--ds-radius-round) !important;
+}
+
+.ds-button--hierarchy-tertiary {
+  border: none;
+  background-color: transparent;
+  padding: 0;
+}
+
+.ds-button--action-neutral.ds-button--hierarchy-tertiary,
+.ds-button--action-neutral.ds-button--hierarchy-tertiary [class*="ds-icon"] {
+  color: var(--ds-disableable-color-foreground-default);
+}
+
+.ds-button--action-success.ds-button--hierarchy-tertiary,
+.ds-button--action-success.ds-button--hierarchy-tertiary [class*="ds-icon"] {
+  color: var(--ds-disableable-color-foreground-success);
+}
+
+.ds-button--action-destructive.ds-button--hierarchy-tertiary,
+.ds-button--action-destructive.ds-button--hierarchy-tertiary [class*="ds-icon"] {
+  color: var(--ds-disableable-color-foreground-danger);
+}
+
+.ds-button--hierarchy-tertiary .ds-button__loader {
+  top: 50%;
+  right: -26px;
+  transform: translateY(-50%);
+}
+
+.ds-button__loader {
+  height: 20px;
+  width: 20px;
+  background-color: white;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: -6px;
+  right: -6px;
+  box-shadow: 0px 5px 2px rgba(0, 0, 0, 0.01), 0px 3px 2px rgba(0, 0, 0, 0.05), 0px 1px 1px rgba(0, 0, 0, 0.09);
+  border-radius: 50%;
+}
+
+.ds-button__loader::before {
+  content: '';
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: conic-gradient(var(--ds-color-brand) 0deg, white 360deg);
+  animation: rotation 400ms infinite linear;
+}
+
+.ds-button__loader::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: white;
+  border-radius: 50%;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(-359deg);
+  }
+}

@@ -1,0 +1,9 @@
+.ds-tooltip {
+  background-color: var(--ds-color-background-contrast);
+  border-radius: var(--ds-radius-md);
+  box-shadow: var(--ds-shadow-soft-elevation-0);
+  color: var(--ds-color-foreground-inverted);
+  font: var(--running-medium-bold);
+  padding: var(--ds-space-lg);
+  margin-bottom: var(--ds-space-lg);
+}

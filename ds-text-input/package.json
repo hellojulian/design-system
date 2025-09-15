@@ -1,0 +1,4 @@
+{
+  "main": "../dist/ds-text-input/index.js",
+  "types": "../dist/ds-text-input/index.d.ts"
+}

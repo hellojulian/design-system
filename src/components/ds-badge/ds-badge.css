@@ -1,0 +1,64 @@
+.ds-badge {
+  display: inline-flex;
+  height: var(--ds-control-height-sm);
+  min-height: var(--ds-control-height-sm);
+  max-height: var(--ds-control-height-sm);
+  padding: 0px var(--ds-space-sm);
+  justify-content: center;
+  align-items: center;
+  gap: var(--ds-space-xs);
+  flex-shrink: 0;
+  border-radius: var(--ds-border-radius-md);
+  border: 1px solid;
+  font-size: 14px;
+  line-height: 22px;
+  font-family: var(--ds-font-family);
+  font-weight: 500;
+}
+
+.ds-badge [class*="ds-icon"] {
+  color: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ds-badge svg {
+  display: block;
+}
+
+.ds-badge-color-neutral {
+  border-color: var(--ds-color-badge-neutral-border);
+  color: var(--ds-color-badge-neutral-text);
+  background: var(--ds-color-badge-neutral-bg);
+}
+
+.ds-badge-color-blue {
+  border-color:  var(--ds-color-badge-blue-border);
+  color: var(--ds-color-badge-blue-text);
+  background: var(--ds-color-badge-blue-bg);
+}
+
+.ds-badge-color-red {
+  border-color: var(--ds-color-badge-red-border);
+  color: var(--ds-color-badge-red-text);
+  background: var(--ds-color-badge-red-bg);
+}
+
+.ds-badge-color-yellow {
+  border-color: var(--ds-color-badge-yellow-border);
+  color: var(--ds-color-badge-yellow-text);
+  background: var(--ds-color-badge-yellow-bg);
+}
+
+.ds-badge-color-green {
+  border-color: var(--ds-color-badge-green-border);
+  color: var(--ds-color-badge-green-text);
+  background: var(--ds-color-badge-green-bg);
+}
+
+.ds-badge-color-purple {
+  border-color: var(--ds-color-badge-purple-border);
+  color: var(--ds-color-badge-purple-text);
+  background: var(--ds-color-badge-purple-bg);
+}

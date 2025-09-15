@@ -1,0 +1,4 @@
+{
+  "main": "../dist/ds-badge/index.js",
+  "types": "../dist/ds-badge/index.d.ts"
+}

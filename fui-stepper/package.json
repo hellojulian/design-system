@@ -1,4 +1,0 @@
-{
-  "main": "../dist/fui-stepper/index.js",
-  "types": "../dist/fui-stepper/index.d.ts"
-}

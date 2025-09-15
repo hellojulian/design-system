@@ -1,0 +1,114 @@
+.ds-notification {
+  display: flex;
+  min-width: 320px;
+  max-width: 480px;
+  overflow: hidden;
+  border-radius: var(--ds-radius-xxlg);
+  padding: 17px;
+  align-items: center;
+  gap: var(--ds-space-md);
+  border: 1px solid var(--ds-color-divider-soft);
+  background: var(--ds-color-background-base);
+  box-shadow: var(--ds-shadow-crisp-down);
+  transition: all 0.2s ease-in-out;
+  position: relative;
+}
+
+.ds-notification-type-neutral {
+  background: var(--ds-color-background-base);
+  border-color: var(--ds-color-divider-soft);
+}
+
+.ds-notification-type-attention {
+  background: var(--ds-color-background-base);
+  border-color: var(--ds-color-divider-soft);
+}
+
+.ds-notification-type-informative {
+  background: var(--ds-color-background-base);
+  border-color: var(--ds-color-divider-soft);
+}
+
+.ds-notification-type-dangerous {
+  background: var(--ds-color-red-50);
+  border: none;
+}
+
+
+.ds-notification-type-success {
+  background: var(--ds-color-green-50);
+  border: none;
+}
+
+
+
+.ds-notification-container {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-space-md);
+  flex: 1 0 0;
+}
+
+.ds-notification-text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0px;
+  flex: 1 0 0;
+}
+
+.ds-notification-title {
+  font: var(--running-medium-regular);
+  font-weight: 500;
+  letter-spacing: var(--ds-letter-spacing-tight);
+  color: var(--ds-disableable-color-foreground-default);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ds-notification-description {
+  font: var(--running-small-regular);
+  font-weight: 400;
+  letter-spacing: var(--ds-letter-spacing-tight);
+  color: var(--ds-color-foreground-opaque);
+  margin: 0;
+}
+
+/* Icon styling */
+.ds-notification [class*="ds-icon"],
+.ds-notification svg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.ds-notification-type-neutral svg {
+  color: var(--ds-color-icon);
+}
+
+.ds-notification-type-attention svg {
+  color: var(--ds-color-status-attention);
+}
+
+.ds-notification-type-informative svg {
+  color: var(--ds-color-status-info);
+}
+
+.ds-notification-type-dangerous svg {
+  color: var(--ds-color-status-danger);
+}
+
+.ds-notification-type-success svg {
+  color: var(--ds-color-status-success);
+}
+
+/* Action button text colors */
+.ds-notification-type-dangerous .ds-button {
+  color: var(--ds-color-status-danger);
+}
+
+.ds-notification-type-success .ds-button {
+  color: var(--ds-color-status-success);
+}

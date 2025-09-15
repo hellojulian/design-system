@@ -1,4 +1,0 @@
-{
-  "main": "../dist/fui-popover/index.js",
-  "types": "../dist/fui-popover/index.d.ts"
-}

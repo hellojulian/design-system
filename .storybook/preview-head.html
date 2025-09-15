@@ -21,11 +21,20 @@
     align-items: center;
     justify-content: center;
     gap: 6px;
-    background-color: var(--fui-color-surface-base);
+    background-color: var(--ds-color-surface-base);
     
   }
   .docs-story {
-    background-color: var(--fui-color-surface-base);
+    background-color: var(--ds-color-surface-base);
+  }
+
+  [data-theme="dark"] html,
+  [data-theme="dark"] body,
+  [data-theme="dark"] #storybook-root {
+    background-color: var(--ds-color-surface-subdued);
+  }
+  [data-theme="dark"] .docs-story {
+    background-color: var(--ds-color-surface-subdued);
   }
   .sbdocs.sbdocs-content {
     max-width: 650px;
@@ -64,5 +73,83 @@
     left: 0;
     float: left;
     margin-right: 8px;
+  }
+
+  /* Remove border from popover trigger */
+  .ds-popover-trigger,
+  .ds-popover-trigger *,
+  .ds-popover .ds-button,
+  .ds-popover .ds-button *,
+  [data-state="open"] .ds-button,
+  [data-state="closed"] .ds-button,
+  [data-state="open"] .ds-button *,
+  [data-state="closed"] .ds-button * {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+  
+  /* Specifically target popover story buttons */
+  .sb-story .ds-button,
+  .docs-story .ds-button {
+    border: none !important;
+    outline: none !important;
+  }
+  
+  .sb-story .ds-button:focus,
+  .sb-story .ds-button:focus-visible,
+  .docs-story .ds-button:focus,
+  .docs-story .ds-button:focus-visible {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+  
+  /* Try targeting button elements directly */
+  button.ds-button {
+    border: none !important;
+    outline: none !important;
+  }
+  
+  button.ds-button:focus,
+  button.ds-button:focus-visible,
+  button.ds-button:hover,
+  button.ds-button:active {
+    border: none !important;
+    outline: none !important;
+  }
+  
+
+  /* Force Inter Tight font for all Storybook interface text */
+  .sbdocs-title,
+  .sbdocs h1,
+  .sbdocs h2,
+  .sbdocs h3,
+  .sbdocs h4,
+  .sbdocs h5,
+  .sbdocs h6,
+  .sb-story h1,
+  .sb-story h2,
+  .sb-story h3,
+  .docs-story h1,
+  .docs-story h2,
+  .docs-story h3 {
+    font-family: 'Inter Tight', sans-serif !important;
+  }
+  
+  /* Force Inter font for Storybook description text only */
+  .sbdocs p,
+  .sbdocs div:not(.sbdocs-title):not(h1):not(h2):not(h3):not(h4):not(h5):not(h6),
+  .sbdocs span:not(.sbdocs-title):not(h1):not(h2):not(h3):not(h4):not(h5):not(h6),
+  .docblock-description,
+  .docblock-description *,
+  .docblock-source,
+  .docblock-source *,
+  .docs-story p,
+  .docs-story div:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6),
+  .docs-story span:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6),
+  .css-1uqx2bp,
+  .css-79elbk {
+    font-family: 'Inter', sans-serif !important;
   }
 </style>

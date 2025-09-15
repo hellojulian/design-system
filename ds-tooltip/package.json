@@ -1,0 +1,4 @@
+{
+  "main": "../dist/ds-tooltip/index.js",
+  "types": "../dist/ds-tooltip/index.d.ts"
+}

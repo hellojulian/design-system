@@ -1,0 +1,4 @@
+{
+  "main": "../dist/ds-stepper/index.js",
+  "types": "../dist/ds-stepper/index.d.ts"
+}

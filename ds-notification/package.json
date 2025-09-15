@@ -1,0 +1,4 @@
+{
+  "main": "../dist/ds-notification/index.js",
+  "types": "../dist/ds-notification/index.d.ts"
+}

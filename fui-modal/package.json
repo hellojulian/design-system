@@ -1,4 +1,0 @@
-{
-  "main": "../dist/fui-modal/index.js",
-  "types": "../dist/fui-modal/index.d.ts"
-}

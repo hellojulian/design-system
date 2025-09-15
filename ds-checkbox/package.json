@@ -1,0 +1,4 @@
+{
+  "main": "../dist/ds-checkbox/index.js",
+  "types": "../dist/ds-checkbox/index.d.ts"
+}

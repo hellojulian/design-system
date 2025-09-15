@@ -25,6 +25,7 @@ const preview = {
     backgrounds: { disable: true },
     actions: { argTypesRegex: "^on[A-Z].*" },
     controls: {
+      expanded: true,
       matchers: {
         color: /(background|color)$/i,
         date: /Date$/,
@@ -32,7 +33,28 @@ const preview = {
     },
     docs: {
       container: DocsContainer,
+      source: { 
+        type: 'code',
+        state: 'open',
+        excludeDecorators: true
+      },
+      canvas: {
+        sourceState: 'shown'
+      },
+      story: {
+        inline: true,
+        height: 'auto'
+      }
     },
+    options: {
+      storySort: {
+        order: ['Foundations', 'Components']
+      }
+    },
+    viewMode: 'docs',
+    previewTabs: {
+      'storybook/docs/panel': { hidden: false }
+    }
   },
 };
 

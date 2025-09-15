@@ -1,4 +1,0 @@
-{
-  "main": "../dist/fui-notification/index.js",
-  "types": "../dist/fui-notification/index.d.ts"
-}

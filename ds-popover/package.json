@@ -1,0 +1,4 @@
+{
+  "main": "../dist/ds-popover/index.js",
+  "types": "../dist/ds-popover/index.d.ts"
+}

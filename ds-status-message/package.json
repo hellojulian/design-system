@@ -1,0 +1,4 @@
+{
+  "main": "../dist/ds-status-message/index.js",
+  "types": "../dist/ds-status-message/index.d.ts"
+}
