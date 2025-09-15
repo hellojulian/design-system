@@ -1,6 +1,6 @@
 import React from 'react';
 import { prefix } from '../prefix';
-import { DsButton, type DsButtonProps } from '../ds-button/ds-button';
+import { DsButton, type dsButtonProps } from '../ds-button/ds-button';
 import Modal from 'react-modal';
 import DsIconX12x12 from '../../icons/ds-icon-x-16x16';
 import classnames from 'classnames';

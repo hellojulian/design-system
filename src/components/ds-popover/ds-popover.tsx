@@ -1,6 +1,6 @@
 import React from 'react';
 import { prefix } from '../prefix';
-import { DsButton, type DsButtonProps } from '../ds-button/ds-button';
+import { DsButton, type dsButtonProps } from '../ds-button/ds-button';
 import DsIconX12x12 from '../../icons/ds-icon-x-12x12';
 import classnames from 'classnames';
 import { Popover, PopoverContent, PopoverTrigger } from './popover';

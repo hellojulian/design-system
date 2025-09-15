@@ -2,11 +2,11 @@ import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Smile } from 'lucide-react';
 
-import { DsBadge, type DsBadgeProps } from './ds-badge';
+import { DsBadge, type dsBadgeProps } from './ds-badge';
 
 const meta = {
   title: ' Components/Badge',
-  component: DsBadge as React.FC<DsBadgeProps>,
+  component: DsBadge as React.FC<dsBadgeProps>,
   tags: ['autodocs'],
   parameters: {
     layout: 'padded',

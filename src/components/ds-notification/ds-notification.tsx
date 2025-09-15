@@ -1,7 +1,7 @@
 import React from 'react';
 import { prefix } from '../prefix';
 import { AlertTriangle, AlertCircle, Info, X, CircleCheck } from 'lucide-react';
-import { DsButton, type DsButtonProps } from '../ds-button/ds-button';
+import { DsButton, type dsButtonProps } from '../ds-button/ds-button';
 import classnames from 'classnames';
 
 const compPrefix = `${prefix}-notification`;
