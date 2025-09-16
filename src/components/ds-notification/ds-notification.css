@@ -30,13 +30,13 @@
 }
 
 .ds-notification-type-dangerous {
-  background: var(--ds-color-red-50);
+  background: var(--ds-color-status-danger-subtle);
   border: none;
 }
 
 
 .ds-notification-type-success {
-  background: var(--ds-color-green-50);
+  background: var(--ds-color-status-success-subtle);
   border: none;
 }
 
