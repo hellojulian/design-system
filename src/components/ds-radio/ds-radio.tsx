@@ -51,7 +51,7 @@ export const DsRadio = (props: dsRadioProps) => {
   return (
     <div aria-label={props.ariaLabel} role='radio' className={classNames} onClick={onClick}>
       <div role='radio' className={indicatorClassNames} onClick={onClick}>
-        <input id={inputId} aria-labelledby={labelId} onKeyDown={onSpace} onBlur={() => { setFocused(false); }} onFocus={() => { setFocused(true); }} disabled={props.disabled} onChange={props.onClick} ref={ref} type='radio' style={{ height: 0 }} />
+        <input id={inputId} aria-labelledby={labelId} onKeyDown={onSpace} onBlur={() => { setFocused(false); }} onFocus={() => { setFocused(true); }} disabled={props.disabled} onChange={props.onClick} ref={ref} type='radio' style={{ position: 'absolute', opacity: 0, width: 0, height: 0 }} />
       </div>
       {props.label && <label id={labelId} htmlFor={inputId} className={`${compPrefix}-label`}>
         {props.label}
