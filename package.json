@@ -37,7 +37,7 @@
   "author": "Alex Yakir",
   "repository": {
     "type": "git",
-    "url": "https://github.com/functional-ui/design-system.git"
+    "url": "https://github.com/hellojulian/design-system.git"
   },
   "license": "ISC",
   "dependencies": {

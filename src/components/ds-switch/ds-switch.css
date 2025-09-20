@@ -30,7 +30,7 @@
 
 .ds-switch-off {
   outline: 1px solid var(--ds-disableable-color-divider-soft);
-  background-color: var(--ds-disableable-color-background-elevated);
+  background-color: var(--ds-disableable-color-background-subdued);
 }
 
 .ds-switch-on {
