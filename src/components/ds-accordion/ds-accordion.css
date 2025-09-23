@@ -1,0 +1,98 @@
+/* Accordion Component Styles */
+.ds-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-sm, 6px);
+  width: 100%;
+}
+
+.ds-accordion-label {
+  font: var(--running-small-bold);
+  color: var(--ds-disableable-color-foreground-default);
+  margin-bottom: var(--ds-space-xs, 4px);
+}
+
+.ds-accordion-container {
+  border: 1px solid var(--ds-disableable-color-divider-solid);
+  border-radius: var(--ds-radius-md, 6px);
+  background-color: var(--ds-disableable-color-background-base);
+  overflow: hidden;
+}
+
+.ds-accordion-container.ds-accordion-container-open {
+  border-color: var(--ds-color-foreground-primary);
+}
+
+.ds-accordion-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--ds-space-lg, 12px);
+  background-color: var(--ds-disableable-color-background-base);
+  border: none;
+  cursor: pointer;
+  font-family: var(--ds-font-family);
+  text-align: left;
+  outline: none;
+}
+
+.ds-accordion-header::after {
+  display: none !important;
+}
+
+.ds-accordion-header:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.ds-accordion-header:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+
+
+.ds-accordion-title {
+  font: var(--running-small-bold);
+  color: var(--ds-disableable-color-foreground-default);
+  flex: 1;
+  margin-right: var(--ds-space-xs, 4px);
+}
+
+.ds-accordion-chevron {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ds-disableable-color-icon);
+  transition: transform 0.3s ease-in-out;
+}
+
+.ds-accordion-chevron-open {
+  transform: rotate(180deg);
+}
+
+.ds-accordion-content {
+  overflow: hidden;
+  transition: height 0.3s ease-in-out;
+}
+
+.ds-accordion-content-inner {
+  padding: 0 var(--ds-space-lg, 12px) var(--ds-space-lg, 12px);
+  font: var(--running-small-regular);
+  color: var(--ds-disableable-color-foreground-default);
+  line-height: 1.5;
+}
+
+/* Disabled state handled by design system variables */
+.ds-accordion.ds-disabled .ds-accordion-header {
+  cursor: not-allowed;
+}
+
+.ds-accordion.ds-disabled .ds-accordion-title {
+  color: var(--ds-disableable-color-foreground-default);
+}
+
+.ds-accordion.ds-disabled .ds-accordion-chevron {
+  color: var(--ds-disableable-color-icon);
+}
