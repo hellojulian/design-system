@@ -1,5 +1,5 @@
 .ds-option-group .ds-option-group-menu-option::after {
-  border-radius: var(--ds-radius-sm);
+  border-radius: var(--ds-radius-round);
   width: calc(100% + var(--ds-space-lg));
   left: 50%;
   transform: translateX(-50%);
@@ -46,4 +46,66 @@
   display: flex;
   flex: 1 0 0;
   color: var(--ds-disableable-color-foreground-default);
+}
+
+/* Icon styling for prefix and suffix icons */
+.ds-option-group-menu-option svg,
+.ds-option-group-menu-option [class*="ds-icon"] {
+  color: var(--ds-color-icon);
+  flex-shrink: 0;
+}
+
+.ds-option-group-menu-option-prefix,
+.ds-option-group-menu-option-suffix {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ds-option-group-menu-option-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 0;
+  min-width: 0; /* Allows text truncation */
+}
+
+.ds-option-group-menu-option-description {
+  font: var(--running-xsmall-regular);
+  color: var(--ds-color-foreground-opaque);
+  margin-top: var(--ds-space-xs);
+}
+
+.ds-option-group-menu-option-checkmark {
+  color: var(--ds-color-status-success);
+  font-weight: bold;
+  font-size: 16px;
+  margin-left: auto;
+}
+
+/* State styles */
+.ds-option-group-menu-option-selected {
+  background-color: var(--ds-color-status-purple-1) !important;
+  border-radius: var(--ds-radius-round) !important;
+  border: none !important;
+}
+
+.ds-option-group-menu-option-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.ds-option-group-menu-option-disabled * {
+  color: var(--ds-color-foreground-disabled);
+  cursor: not-allowed;
+}
+
+/* Focus styles - only show for keyboard navigation */
+.ds-option-group-menu-option:focus-visible {
+  outline: 2px solid var(--ds-color-state-focus);
+  outline-offset: -2px;
+}
+
+/* Remove default focus outline */
+.ds-option-group-menu-option:focus {
+  outline: none;
 }

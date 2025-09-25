@@ -151,7 +151,7 @@
 .ds-button--hierarchy-tertiary {
   border: none;
   background-color: transparent;
-  padding: 0;
+  padding: 4px;
 }
 
 .ds-button--action-neutral.ds-button--hierarchy-tertiary,

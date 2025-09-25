@@ -26,6 +26,22 @@ const meta = {
       control: {
         disable: true
       }
+    },
+    ariaLabel: {
+      name: '🔗 ariaLabel',
+      control: 'text',
+      description: 'Accessible label for the option group'
+    },
+    role: {
+      name: '🔗 role',
+      control: 'select',
+      options: ['list', 'listbox', 'menu'],
+      description: 'ARIA role for the option group'
+    },
+    multiselect: {
+      name: '🔗 multiselect',
+      control: 'boolean',
+      description: 'Allows multiple option selection'
     }
   }
 } satisfies Meta<typeof DsOptionGroup>;
@@ -65,3 +81,4 @@ export const CustomOptions: Story = {
     ]
   }
 };
+

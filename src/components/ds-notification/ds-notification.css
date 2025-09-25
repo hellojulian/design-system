@@ -57,6 +57,13 @@
   flex: 1 0 0;
 }
 
+.ds-notification-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
 .ds-notification-title {
   font: var(--running-medium-regular);
   font-weight: 500;
@@ -74,6 +81,22 @@
   letter-spacing: var(--ds-letter-spacing-tight);
   color: var(--ds-color-foreground-opaque);
   margin: 0;
+}
+
+.ds-notification-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-space-sm);
+}
+
+.ds-notification-dismiss {
+  min-width: auto !important;
+  width: auto !important;
+  padding: var(--ds-space-xs) !important;
+}
+
+.ds-notification-hidden {
+  display: none;
 }
 
 /* Icon styling */

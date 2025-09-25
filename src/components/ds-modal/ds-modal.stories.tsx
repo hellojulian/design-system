@@ -92,6 +92,11 @@ const meta = {
     showDismiss: {
       name: '🔗 showDismiss'
     },
+    ariaLabel: {
+      name: '🔗 ariaLabel',
+      control: 'text',
+      description: 'Accessible label for the modal when no header is present'
+    },
     className: {
       control: {
         disable: true

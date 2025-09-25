@@ -53,9 +53,20 @@
   align-self: stretch;
 }
 
+.ds-modal-title {
+  font: var(--h6-bold);
+  color: var(--ds-color-foreground-default);
+  margin: 0;
+}
+
 .ds-modal-subtitle {
   font: var(--running-medium-regular);
   color: var(--ds-color-foreground-opaque);
+  margin: 0;
+}
+
+.ds-modal-body {
+  /* Body wrapper for semantic structure */
 }
 
 .ds-modal-divided .ds-modal-header {

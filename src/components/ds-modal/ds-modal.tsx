@@ -34,25 +34,34 @@ export interface DsModalProps {
   modalFooter?: JSX.Element | ModalFooterConfig
   showDismiss?: boolean
   divided?: boolean
+  
+  // ARIA attributes
+  ariaLabel?: string
+  ariaLabelledBy?: string
+  ariaDescribedBy?: string
+  role?: string
 
   className?: string
 }
 
 export const DsModal = ({ shouldCloseOnOverlayClick = true, ...props }: DsModalProps) => {
+  const headerId = `${compPrefix}-title-${React.useId()}`;
+  const bodyId = `${compPrefix}-body-${React.useId()}`;
+
   const header = React.useMemo(() => {
     if (!props.modalHeader) return null;
     if (React.isValidElement(props.modalHeader)) return props.modalHeader;
     const { modalTitle, modalSubtitle, icon, layout } = props.modalHeader as ModalHeaderConfig;
     return (
       <div className={`${compPrefix}-header layout-${layout || 'horizontal'}`}>
-        {icon && <div className={`${compPrefix}-icon`}>{icon}</div>}
+        {icon && <div className={`${compPrefix}-icon`} aria-hidden="true">{icon}</div>}
         <div className={`${compPrefix}-header-content-wrapper layout-${layout || 'horizontal'}`}>
-          {modalTitle}
-          {modalSubtitle && <span className={`${compPrefix}-subtitle`}>{modalSubtitle}</span>}
+          <h2 id={headerId} className={`${compPrefix}-title`}>{modalTitle}</h2>
+          {modalSubtitle && <p className={`${compPrefix}-subtitle`}>{modalSubtitle}</p>}
         </div>
       </div>
     );
-  }, [props.modalHeader]);
+  }, [props.modalHeader, headerId]);
 
   const footer = React.useMemo(() => {
     if (!props.modalFooter) return null;
@@ -76,6 +85,11 @@ export const DsModal = ({ shouldCloseOnOverlayClick = true, ...props }: DsModalP
     props.divided ? `${compPrefix}-divided` : ''
   );
 
+  // Determine ARIA attributes
+  const ariaLabelledBy = props.ariaLabelledBy || (header ? headerId : undefined);
+  const ariaDescribedBy = props.ariaDescribedBy || (props.modalBody ? bodyId : undefined);
+  const modalRole = props.role || 'dialog';
+
   return (
     <Modal
       isOpen={props.open}
@@ -83,10 +97,29 @@ export const DsModal = ({ shouldCloseOnOverlayClick = true, ...props }: DsModalP
       shouldCloseOnOverlayClick={shouldCloseOnOverlayClick}
       className={classNames}
       overlayClassName={`${compPrefix}-overlay`}
+      role={modalRole}
+      aria-label={props.ariaLabel}
+      aria-labelledby={ariaLabelledBy}
+      aria-describedby={ariaDescribedBy}
+      aria-modal="true"
+      shouldFocusAfterRender={true}
+      shouldReturnFocusAfterClose={true}
     >
-      {props.showDismiss && <DsButton onClick={() => { props.onOpenChange(false); }} className={`${compPrefix}-dismiss`} hierarchy='tertiary' icon={<DsIconX12x12 />} />}
+      {props.showDismiss && (
+        <DsButton 
+          onClick={() => { props.onOpenChange(false); }} 
+          className={`${compPrefix}-dismiss`} 
+          hierarchy='tertiary' 
+          icon={<DsIconX12x12 />}
+          aria-label="Close modal"
+        />
+      )}
       {header}
-      {props.modalBody}
+      {props.modalBody && (
+        <div id={bodyId} className={`${compPrefix}-body`}>
+          {props.modalBody}
+        </div>
+      )}
       {footer}
     </Modal>
   );

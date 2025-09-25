@@ -187,3 +187,29 @@
   border: 1px solid var(--ds-color-divider-soft);
   box-shadow: var(--ds-shadow-soft-elevation-1);
 }
+
+/* Card close button hover effect */
+.ds-card .ds-button {
+  position: relative;
+}
+
+.ds-card .ds-button::after {
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  right: -8px;
+  bottom: -8px;
+  content: "";
+  background-color: transparent;
+  pointer-events: none;
+  border-radius: 24px;
+}
+
+.ds-card .ds-button:hover::after {
+  background-color: var(--ds-color-state-hover);
+}
+
+/* Override global focus-visible border-radius for card modal */
+.ds-card:focus-visible {
+  border-radius: var(--ds-radius-xxlg) !important;
+}

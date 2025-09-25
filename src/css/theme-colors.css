@@ -36,6 +36,7 @@
   --ds-color-divider-solid: var(--ds-color-neutral-300);
   --ds-color-status-attention: var(--ds-color-brown-600);
   --ds-color-status-attention-subtle: var(--ds-color-yellow-100);
+  --ds-color-status-purple-1: var(--ds-color-purple-100);
   --ds-color-status-danger: var(--ds-color-red-700);
   --ds-color-status-danger-subtle: var(--ds-color-red-100);
   --ds-color-status-info: var(--ds-color-blue-700);
@@ -101,6 +102,7 @@
   --ds-color-disabled-text: var(--ds-color-neutral-500);
   --ds-color-status-attention: var(--ds-color-brown-500);
   --ds-color-status-attention-subtle: var(--ds-color-brown-900);
+  --ds-color-status-purple-1: var(--ds-color-purple-950);
   --ds-color-status-danger: var(--ds-color-red-500);
   --ds-color-status-danger-subtle: var(--ds-color-red-950);
   --ds-color-status-info: var(--ds-color-blue-500);

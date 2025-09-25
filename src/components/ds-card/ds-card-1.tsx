@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Search, CircleX } from 'lucide-react';
+import { Search } from 'lucide-react';
 import { DsButton } from '../ds-button/ds-button';
 import { DsOptionGroup, type Option } from '../ds-option-group/ds-option-group';
 import { DsCheckbox } from '../ds-checkbox/ds-checkbox';
+import DsIconX12x12 from '../../icons/ds-icon-x-16x16';
 
 interface ToppingOption {
   id: string;
@@ -187,6 +188,7 @@ export const DsCard1 = ({
       <div 
         ref={modalRef}
         tabIndex={-1}
+        className="ds-card"
         style={{
           width: '100%',
           maxWidth: '521px',
@@ -197,7 +199,8 @@ export const DsCard1 = ({
           boxShadow: '0 0 10px -2px rgba(0,0,0,0.15)',
           display: 'flex',
           flexDirection: 'column',
-          maxHeight: '90vh'
+          maxHeight: '90vh',
+          position: 'relative'
         }}
         onClick={(e) => e.stopPropagation()}
       >
@@ -224,30 +227,24 @@ export const DsCard1 = ({
                 color: 'var(--ds-color-foreground-default)',
                 lineHeight: '26px',
                 margin: 0,
-                paddingRight: 'var(--ds-space-md)',
                 fontFamily: 'var(--ds-font-family)'
               }}
             >
               {title}
             </h2>
             {onClose && (
-              <button
+              <DsButton 
                 onClick={onClose}
-                style={{
-                  width: '32px',
-                  height: '32px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  backgroundColor: 'transparent',
-                  border: 'none',
-                  borderRadius: 'var(--ds-radius-sm)',
-                  cursor: 'pointer'
-                }}
+                hierarchy="tertiary"
+                icon={<DsIconX12x12 />}
                 aria-label="Close modal"
-              >
-                <CircleX style={{ width: '32px', height: '32px', color: 'var(--ds-color-icon)' }} />
-              </button>
+                style={{
+                  width: '28px',
+                  height: '28px',
+                  minWidth: '28px',
+                  padding: '4px'
+                }}
+              />
             )}
           </div>
           

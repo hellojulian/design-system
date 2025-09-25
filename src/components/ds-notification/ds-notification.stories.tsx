@@ -48,9 +48,25 @@ const meta = {
       }
     },
     ariaLabel: {
-      control: {
-        disable: true
-      }
+      name: '🔗 ariaLabel',
+      control: 'text',
+      description: 'Accessible label for the notification'
+    },
+    dismissible: {
+      name: '🔗 dismissible',
+      control: 'boolean',
+      description: 'Shows dismiss button for user-controlled closure'
+    },
+    autoClose: {
+      name: '🔗 autoClose',
+      control: 'boolean',
+      description: 'Automatically closes after specified delay'
+    },
+    live: {
+      name: '🔗 live',
+      control: 'select',
+      options: ['polite', 'assertive'],
+      description: 'Controls urgency of screen reader announcements'
     }
   }
 } satisfies Meta<typeof DsNotification>;
@@ -91,6 +107,42 @@ export const Types: Story = {
     type: {
       table: {
         disable: true
+      }
+    }
+  }
+};
+
+export const AccessibilityDemo: Story = {
+  name: 'Accessibility Features',
+  render: (args) => (
+    <div style={{ width: '420px', display: 'flex', flexDirection: 'column', gap: 'var(--ds-space-md)' }}>
+      <DsNotification 
+        title="Alert Notification" 
+        description="This is an urgent alert that uses assertive live region"
+        type="dangerous"
+        live="assertive"
+        dismissible={true}
+      />
+      <DsNotification 
+        title="Auto-closing Success" 
+        description="This notification will close automatically after 3 seconds"
+        type="success"
+        autoClose={true}
+        autoCloseDelay={3000}
+      />
+      <DsNotification 
+        title="Custom ARIA Label" 
+        description="This notification has a custom accessibility label"
+        type="informative"
+        ariaLabel="Important system information notification"
+        dismissible={true}
+      />
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story: 'Demonstrates accessibility features including live regions, auto-close functionality, dismissible notifications, and custom ARIA labels.'
       }
     }
   }

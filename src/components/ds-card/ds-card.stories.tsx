@@ -1,6 +1,7 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { DsCard1 } from './ds-card';
+import { DsCard2 } from './ds-card-2';
 import { DsButton } from '../ds-button/ds-button';
 
 const meta = {
@@ -58,6 +59,84 @@ export const Card: StoryObj<typeof DsCard1> = {
     docs: {
       description: {
         story: 'A clean, focused modal card implementation with search functionality and custom checkboxes. Uses design system tokens with Tailwind utilities and proper 521px width from Figma.'
+      }
+    }
+  },
+  decorators: [
+    (Story) => {
+      React.useEffect(() => {
+        // Override the fixed positioning and body scroll lock for Storybook
+        const style = document.createElement('style');
+        style.textContent = `
+          .sb-show-main [role="dialog"] {
+            position: static !important;
+            background-color: transparent !important;
+            padding: 0 !important;
+          }
+          body {
+            overflow: auto !important;
+          }
+        `;
+        document.head.appendChild(style);
+        
+        // Force body overflow to be auto and prevent component from changing it
+        const originalOverflow = document.body.style.overflow;
+        document.body.style.overflow = 'auto';
+        
+        // Watch for changes and reset
+        const observer = new MutationObserver(() => {
+          if (document.body.style.overflow !== 'auto') {
+            document.body.style.overflow = 'auto';
+          }
+        });
+        
+        observer.observe(document.body, {
+          attributes: true,
+          attributeFilter: ['style']
+        });
+        
+        return () => {
+          document.head.removeChild(style);
+          observer.disconnect();
+          document.body.style.overflow = originalOverflow;
+        };
+      }, []);
+      
+      return <Story />;
+    }
+  ]
+};
+
+export const CardImage: StoryObj<typeof DsCard2> = {
+  name: 'Card with Image',
+  render: () => (
+    <div style={{ 
+      padding: '40px',
+      display: 'flex', 
+      alignItems: 'center', 
+      justifyContent: 'center',
+      minHeight: '600px'
+    }}>
+      <DsCard2
+        title="Card with image"
+        primaryAction={{
+          label: "Continue",
+          onClick: () => console.log('Continue clicked')
+        }}
+        secondaryAction={{
+          label: "Cancel",
+          onClick: () => console.log('Cancel clicked')
+        }}
+        onClose={() => console.log('Close clicked')}
+        isOpen={true}
+      />
+    </div>
+  ),
+  parameters: {
+    layout: 'fullscreen',
+    docs: {
+      description: {
+        story: 'A card variant that displays an image instead of interactive content. Features the same header with title and close button, but replaces the search and options area with a beautiful image display.'
       }
     }
   },

@@ -9,6 +9,9 @@ export interface Option {
   value: string
   prefix?: JSX.Element
   suffix?: JSX.Element
+  disabled?: boolean
+  selected?: boolean
+  description?: string
 }
 
 export interface OptionGroup {
@@ -21,7 +24,12 @@ export interface DsOptionGroupProps {
   className?: string
   onSelect?: (value: string) => void
   ariaLabel?: string
+  ariaLabelledBy?: string
+  ariaDescribedBy?: string
   role?: 'listbox' | 'menu' | 'list'
+  multiselect?: boolean
+  selectedValues?: string[]
+  id?: string
 }
 
 const isOptionGroup = (option: Option | OptionGroup): option is OptionGroup => {
@@ -33,10 +41,17 @@ export const DsOptionGroup = ({
   className,
   onSelect,
   ariaLabel,
-  role = 'list'
+  ariaLabelledBy,
+  ariaDescribedBy,
+  role = 'list',
+  multiselect = false,
+  selectedValues = [],
+  id,
+  ...restProps
 }: DsOptionGroupProps) => {
   const [focusedIndex, setFocusedIndex] = React.useState<number>(-1);
   const optionRefs = React.useRef<(HTMLDivElement | null)[]>([]);
+  const componentId = id || `option-group-${React.useId()}`;
   const classnames = classNames(compPrefix, className);
   
   // Get all selectable options (flatten groups)
@@ -52,35 +67,67 @@ export const DsOptionGroup = ({
     return flat;
   }, [options]);
 
+  // Find next/previous non-disabled option
+  const findNextEnabledIndex = (currentIndex: number, direction: 'next' | 'prev') => {
+    const increment = direction === 'next' ? 1 : -1;
+    let index = currentIndex + increment;
+    
+    while (index >= 0 && index < flatOptions.length) {
+      if (!flatOptions[index].disabled) {
+        return index;
+      }
+      index += increment;
+    }
+    
+    return currentIndex; // Stay at current if no enabled option found
+  };
+
   const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>, optionIndex: number) => {
+    const option = flatOptions[optionIndex];
+    
+    // Don't handle keys for disabled options
+    if (option.disabled) {
+      return;
+    }
+
     switch (e.key) {
       case ' ':
       case 'Enter':
         e.preventDefault();
-        onSelect?.(flatOptions[optionIndex].value);
+        onSelect?.(option.value);
         break;
       case 'ArrowDown':
         e.preventDefault();
-        const nextIndex = Math.min(optionIndex + 1, flatOptions.length - 1);
-        setFocusedIndex(nextIndex);
-        optionRefs.current[nextIndex]?.focus();
+        const nextIndex = findNextEnabledIndex(optionIndex, 'next');
+        if (nextIndex !== optionIndex) {
+          setFocusedIndex(nextIndex);
+          optionRefs.current[nextIndex]?.focus();
+        }
         break;
       case 'ArrowUp':
         e.preventDefault();
-        const prevIndex = Math.max(optionIndex - 1, 0);
-        setFocusedIndex(prevIndex);
-        optionRefs.current[prevIndex]?.focus();
+        const prevIndex = findNextEnabledIndex(optionIndex, 'prev');
+        if (prevIndex !== optionIndex) {
+          setFocusedIndex(prevIndex);
+          optionRefs.current[prevIndex]?.focus();
+        }
         break;
       case 'Home':
         e.preventDefault();
-        setFocusedIndex(0);
-        optionRefs.current[0]?.focus();
+        const firstEnabledIndex = findNextEnabledIndex(-1, 'next');
+        setFocusedIndex(firstEnabledIndex);
+        optionRefs.current[firstEnabledIndex]?.focus();
         break;
       case 'End':
         e.preventDefault();
-        const lastIndex = flatOptions.length - 1;
-        setFocusedIndex(lastIndex);
-        optionRefs.current[lastIndex]?.focus();
+        const lastEnabledIndex = findNextEnabledIndex(flatOptions.length, 'prev');
+        setFocusedIndex(lastEnabledIndex);
+        optionRefs.current[lastEnabledIndex]?.focus();
+        break;
+      case 'Escape':
+        e.preventDefault();
+        // Allow parent components to handle escape (e.g., close dropdown)
+        e.currentTarget.blur();
         break;
     }
   };
@@ -89,21 +136,63 @@ export const DsOptionGroup = ({
     const isListItem = role === 'list';
     const isMenuItem = role === 'menu';
     const isOption = role === 'listbox';
+    const isSelected = option.selected || selectedValues.includes(option.value);
+    const isDisabled = option.disabled;
+    const optionId = `${componentId}-option-${globalIndex}`;
+    const descriptionId = option.description ? `${optionId}-description` : undefined;
+    
+    // Find first non-disabled option for initial focus
+    const firstEnabledIndex = flatOptions.findIndex(opt => !opt.disabled);
+    const shouldReceiveInitialFocus = globalIndex === firstEnabledIndex;
+
+    const handleClick = () => {
+      if (!isDisabled) {
+        onSelect?.(option.value);
+      }
+    };
 
     return (
       <div 
         ref={el => optionRefs.current[globalIndex] = el}
-        tabIndex={globalIndex === 0 ? 0 : -1}
+        id={optionId}
+        tabIndex={shouldReceiveInitialFocus ? 0 : -1}
         onKeyDown={(e) => handleKeyDown(e, globalIndex)}
         key={`${option.value}-${index}`} 
-        className={`${compPrefix}-menu-option ${prefix}-interactable`} 
-        onClick={() => { onSelect?.(option.value); }}
+        className={classNames(
+          `${compPrefix}-menu-option`,
+          !isDisabled && `${prefix}-interactable`,
+          isSelected && `${compPrefix}-menu-option-selected`,
+          isDisabled && `${compPrefix}-menu-option-disabled`
+        )}
+        onClick={handleClick}
         role={isListItem ? 'listitem' : isMenuItem ? 'menuitem' : isOption ? 'option' : undefined}
-        aria-selected={isOption ? undefined : undefined} // Could be enhanced with selection state
+        aria-selected={isOption || isMenuItem ? isSelected : undefined}
+        aria-disabled={isDisabled}
+        aria-describedby={descriptionId}
       >
-        {option.prefix}
-        <div className={`${compPrefix}-menu-option-label`}>{option.label}</div>
-        {option.suffix}
+        {option.prefix && (
+          <div className={`${compPrefix}-menu-option-prefix`} aria-hidden="true">
+            {option.prefix}
+          </div>
+        )}
+        <div className={`${compPrefix}-menu-option-content`}>
+          <div className={`${compPrefix}-menu-option-label`}>{option.label}</div>
+          {option.description && (
+            <div id={descriptionId} className={`${compPrefix}-menu-option-description`}>
+              {option.description}
+            </div>
+          )}
+        </div>
+        {option.suffix && (
+          <div className={`${compPrefix}-menu-option-suffix`} aria-hidden="true">
+            {option.suffix}
+          </div>
+        )}
+        {isSelected && multiselect && (
+          <div className={`${compPrefix}-menu-option-checkmark`} aria-hidden="true">
+            ✓
+          </div>
+        )}
       </div>
     );
   };
@@ -119,9 +208,14 @@ export const DsOptionGroup = ({
           return renderMenuOption(groupOption, groupOptionIndex, currentGlobalIndex);
         });
         
+        const groupId = `${componentId}-group-${index}`;
+        const groupLabelId = `${groupId}-label`;
+        
         return (
-          <div key={index} className={`${compPrefix}-menu-group`} role="group" aria-labelledby={`group-label-${index}`}>
-            <div id={`group-label-${index}`} className={`${compPrefix}-menu-group-label`}>{option.label}</div>
+          <div key={index} className={`${compPrefix}-menu-group`} role="group" aria-labelledby={groupLabelId}>
+            <div id={groupLabelId} className={`${compPrefix}-menu-group-label`} role="presentation">
+              {option.label}
+            </div>
             {groupItems}
           </div>
         );
@@ -131,12 +225,38 @@ export const DsOptionGroup = ({
     });
   };
 
+  // Enhanced ARIA attributes based on role
+  const getAriaAttributes = () => {
+    const base = {
+      id: componentId,
+      className: classnames,
+      role: role,
+      'aria-label': ariaLabel,
+      'aria-labelledby': ariaLabelledBy,
+      'aria-describedby': ariaDescribedBy,
+      ...restProps
+    };
+
+    if (role === 'listbox') {
+      return {
+        ...base,
+        'aria-multiselectable': multiselect,
+        'aria-orientation': 'vertical'
+      };
+    }
+
+    if (role === 'menu') {
+      return {
+        ...base,
+        'aria-orientation': 'vertical'
+      };
+    }
+
+    return base;
+  };
+
   return (
-    <div 
-      className={classnames}
-      role={role}
-      aria-label={ariaLabel}
-    >
+    <div {...getAriaAttributes()}>
       {renderOptions(options)}
     </div>
   );
