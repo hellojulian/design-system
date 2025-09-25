@@ -225,10 +225,7 @@ export const ColorPalette: Story = {
     viewport: {
       defaultViewport: 'responsive'
     },
-    controls: {
-      hideNoControlsWarning: true,
-      include: []
-    },
+    controls: { disable: true },
     docs: {
       description: {
         story: 'Complete color palette showing all available color tokens with visual swatches, token names, and hex values. This matches the design system structure with 7 color families and usage guidelines.'
