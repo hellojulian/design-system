@@ -34,7 +34,7 @@ export const DsAvatar = ({ size = '80px', variant = 'Male 1', alt, ...props }: D
   );
 
   const imageSrc = getAvatarImage(size, variant);
-  const altText = alt || `Avatar ${variant} ${size}`;
+  const altText = alt || `Profile avatar showing ${variant.toLowerCase()} representation`;
 
   return (
     <div className={classNames}>
@@ -42,6 +42,8 @@ export const DsAvatar = ({ size = '80px', variant = 'Male 1', alt, ...props }: D
         src={imageSrc} 
         alt={altText}
         className={`${compPrefix}-image`}
+        role="img"
+        aria-label={altText}
       />
     </div>
   );

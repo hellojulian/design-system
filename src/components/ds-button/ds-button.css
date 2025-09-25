@@ -124,28 +124,25 @@
 
 .ds-button.ds-button--hierarchy-secondary {
   background-color: var(--ds-color-button-secondary-bg-neutral) !important;
-  border: 1px solid var(--ds-color-button-secondary-border-neutral) !important;
   border-radius: var(--ds-radius-round) !important;
 }
 
 .ds-button.ds-button--action-neutral.ds-button--hierarchy-secondary {
-  border-color: var(--ds-color-button-secondary-border-neutral) !important;
+  border: 1px solid var(--ds-color-button-secondary-border-neutral) !important;
   color: var(--ds-disableable-color-foreground-default);
   background-color: var(--ds-color-button-secondary-bg-neutral) !important;
   border-radius: var(--ds-radius-round) !important;
-  border-width: 1px !important;
-  border-style: solid !important;
 }
 
 .ds-button.ds-button--action-success.ds-button--hierarchy-secondary {
-  border-color: var(--ds-color-button-secondary-border-success);
+  border: 1px solid var(--ds-color-button-secondary-border-success) !important;
   color: var(--ds-disableable-color-foreground-success);
   background-color: var(--ds-color-button-secondary-bg-success);
   border-radius: var(--ds-radius-round) !important;
 }
 
 .ds-button.ds-button--action-destructive.ds-button--hierarchy-secondary {
-  border-color: var(--ds-color-button-secondary-border-destructive);
+  border: 1px solid var(--ds-color-button-secondary-border-destructive) !important;
   color: var(--ds-disableable-color-foreground-danger);
   background-color: var(--ds-color-button-secondary-bg-destructive);
   border-radius: var(--ds-radius-round) !important;

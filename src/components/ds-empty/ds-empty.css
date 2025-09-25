@@ -17,11 +17,15 @@
 .ds-empty-title {
   font: var(--running-small-bold);
   color: var(--ds-color-foreground-default);
+  margin: 0;
+  padding: 0;
 }
 
 .ds-empty-description {
   font: var(--running-small-regular);
   color: var(--ds-color-foreground-soft);
+  margin: 0;
+  padding: 0;
 }
 
 .ds-empty-with-action .ds-empty-content {

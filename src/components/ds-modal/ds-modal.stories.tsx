@@ -257,38 +257,3 @@ export const Footer: Story = {
   }
 };
 
-export const CustomHeaderAndFooter: Story = {
-  render: (args) => {
-    const [open, setOpen] = React.useState(false);
-
-    React.useEffect(() => {
-      setOpen(args.open);
-    }, [args.open]);
-
-    return (
-      <>
-        <DsModal {...args} open={open} onOpenChange={setOpen} />
-        <DsButton onClick={() => { setOpen(true); }} label='Open Modal' />
-      </>
-    );
-  },
-  argTypes: {
-    modalHeader: {
-      table: {
-        disable: true
-      }
-    },
-    modalFooter: {
-      table: {
-        disable: true
-      }
-    }
-  },
-  args: {
-    open: false,
-    showDismiss: true,
-    modalBody: <div style={{ padding: '0 var(--ds-space-xxlg)', width: 360 }}><DsEmpty title='Empty State' description='Modal Empty State' illustration={<DsIllustration name="Flower" />} /></div>,
-    modalHeader: <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-space-md)', padding: 'var(--ds-space-xxlg)', borderBottom: '1px solid var(--ds-color-divider-soft)', marginBottom: 'var(--ds-space-xxlg)' }}>This is a custom header <DsBadge label='Custom' /></div>,
-    modalFooter: <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ds-space-md)', padding: 'var(--ds-space-xxlg)', borderTop: '1px solid var(--ds-color-divider-soft)', marginTop: 'var(--ds-space-xxlg)' }}>This is a custom footer <DsBadge label='Custom' /></div>
-  }
-};

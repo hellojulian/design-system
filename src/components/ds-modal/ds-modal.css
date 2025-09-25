@@ -20,6 +20,11 @@
   position: relative;
 }
 
+/* Override global focus-visible border-radius for modal */
+.ds-modal:focus-visible {
+  border-radius: var(--ds-radius-xxlg) !important;
+}
+
 .ds-modal-header {
   gap: var(--ds-space-lg);
   align-self: stretch;
