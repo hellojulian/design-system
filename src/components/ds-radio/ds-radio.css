@@ -45,6 +45,14 @@
   background-color: var(--ds-disableable-color-foreground-primary);
 }
 
+.ds-radio-input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
 .ds-radio-label {
   font: var(--running-small-bold);
   color: var(--ds-disableable-color-foreground-default);
