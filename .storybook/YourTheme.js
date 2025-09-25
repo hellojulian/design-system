@@ -1,11 +1,12 @@
 import { create } from '@storybook/theming/create';
-import logoUrl from './sb-logo.png';
+// Use require instead of import for the logo
+const logoUrl = require('./sb-logo.png');
 
 export default create({
   base: 'light',
   brandTitle: 'Design System',
   brandUrl: 'https://www.figma.com/design/H183SNYASQn8z49YEbqRZj/Design-System?node-id=3782-13078&t=FwlQPmpcAZ1d2IMZ-1',
-  // brandImage: logoUrl,
+  brandImage: logoUrl,
   brandTarget: '_blank',
   fontBase: '"Inter", sans-serif',
   fontCode: '"IBM Plex Mono", monospace',
