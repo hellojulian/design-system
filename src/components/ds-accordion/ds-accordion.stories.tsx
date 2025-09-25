@@ -131,7 +131,12 @@ export const Default: Story = {
   args: {
     title: 'What is this accordion component?',
     body: 'This is a fully functional accordion component built with React and Tailwind CSS. It supports multiple states including open, closed, and disabled.'
-  }
+  },
+  render: (args) => (
+    <div style={{ maxWidth: '500px' }}>
+      <DsAccordion {...args} />
+    </div>
+  )
 };
 
 export const States: Story = {
