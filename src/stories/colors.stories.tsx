@@ -226,7 +226,8 @@ export const ColorPalette: Story = {
       defaultViewport: 'responsive'
     },
     controls: {
-      hideNoControlsWarning: true
+      hideNoControlsWarning: true,
+      include: []
     },
     docs: {
       description: {
