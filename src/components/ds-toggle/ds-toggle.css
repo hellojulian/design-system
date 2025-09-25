@@ -67,3 +67,22 @@
   position: absolute;
   transition: left 100ms ease-in;
 }
+
+.ds-toggle-legend {
+  font: var(--running-small-bold);
+  color: var(--ds-color-foreground-soft);
+  margin-bottom: var(--ds-space-sm);
+  padding: 0;
+}
+
+.ds-toggle-prefix,
+.ds-toggle-suffix {
+  display: flex;
+  align-items: center;
+}
+
+/* Focus styles for radio inputs */
+.ds-toggle-input:focus-visible + .ds-toggle-option {
+  outline: 2px solid var(--ds-color-state-focus);
+  outline-offset: 2px;
+}

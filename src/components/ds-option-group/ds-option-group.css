@@ -1,5 +1,5 @@
 .ds-option-group .ds-option-group-menu-option::after {
-  border-radius: var(--ds-radius-round);
+  border-radius: var(--ds-radius-lg);
   width: calc(100% + var(--ds-space-lg));
   left: 50%;
   transform: translateX(-50%);

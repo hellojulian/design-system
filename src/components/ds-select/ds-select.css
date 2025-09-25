@@ -75,6 +75,10 @@
   overflow: visible;
 }
 
+.ds-select-container.ds-interactable::after {
+  border-radius: var(--ds-radius-sm);
+}
+
 .ds-select-native-element-no-value {
   opacity: 0;
 }

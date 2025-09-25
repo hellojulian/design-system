@@ -69,6 +69,10 @@ const isOptionGroup = (option: Option | OptionGroup): option is OptionGroup => {
 };
 
 const DsNativeSelect = (props: DsNativeSelectProps) => {
+  const selectId = React.useMemo(() => `${compPrefix}-${Math.random().toString(36).substring(7)}`, []);
+  const labelId = React.useMemo(() => `${compPrefix}-label-${Math.random().toString(36).substring(7)}`, []);
+  const statusId = React.useMemo(() => `${compPrefix}-status-${Math.random().toString(36).substring(7)}`, []);
+
   const onChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     props.onChange(e.target.value);
   };

@@ -18,15 +18,21 @@ export interface DsToggleProps {
   value: string
   onChange: (value: string) => void
   disabled?: boolean
+  legend?: string
 
   className?: string
   ariaLabel?: string
+  ariaLabelledBy?: string
+  ariaDescribedBy?: string
+  id?: string
 }
 
 export const DsToggle = ({ size = 'medium', ...props }: DsToggleProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const [activeTabLeftLocation, setActiveTabLeftLocation] = useState(0);
   const [activeTabWidth, setactiveTabWidth] = useState(0);
+  const groupId = props.id || React.useMemo(() => `${compPrefix}-${Math.random().toString(36).substring(7)}`, []);
+  const legendId = React.useMemo(() => `${compPrefix}-legend-${Math.random().toString(36).substring(7)}`, []);
 
   useLayoutEffect(() => {
     if (ref.current) {
@@ -35,6 +41,41 @@ export const DsToggle = ({ size = 'medium', ...props }: DsToggleProps) => {
     }
   }, [props.value, size]);
 
+  // Handle keyboard navigation for radio group
+  const handleKeyDown = React.useCallback((e: React.KeyboardEvent) => {
+    const enabledOptions = props.options.filter(option => !option.disabled && !props.disabled);
+    const currentIndex = enabledOptions.findIndex(option => option.value === props.value);
+    
+    let nextIndex = currentIndex;
+    
+    switch (e.key) {
+      case 'ArrowRight':
+      case 'ArrowDown':
+        e.preventDefault();
+        nextIndex = (currentIndex + 1) % enabledOptions.length;
+        break;
+      case 'ArrowLeft':
+      case 'ArrowUp':
+        e.preventDefault();
+        nextIndex = currentIndex === 0 ? enabledOptions.length - 1 : currentIndex - 1;
+        break;
+      case 'Home':
+        e.preventDefault();
+        nextIndex = 0;
+        break;
+      case 'End':
+        e.preventDefault();
+        nextIndex = enabledOptions.length - 1;
+        break;
+      default:
+        return;
+    }
+    
+    if (nextIndex !== currentIndex && enabledOptions[nextIndex]) {
+      props.onChange(enabledOptions[nextIndex].value);
+    }
+  }, [props.options, props.value, props.onChange, props.disabled]);
+
   const classNames = classnames(
     compPrefix,
     `${compPrefix}-size-${size}`,
@@ -42,38 +83,77 @@ export const DsToggle = ({ size = 'medium', ...props }: DsToggleProps) => {
     props.className
   );
 
+  // Determine ARIA attributes
+  const getFieldsetProps = () => {
+    const baseProps = {
+      id: groupId,
+      className: classNames,
+      onKeyDown: handleKeyDown
+    };
+
+    // If we have a legend, use aria-labelledby, otherwise use aria-label
+    if (props.legend) {
+      return {
+        ...baseProps,
+        'aria-labelledby': props.ariaLabelledBy || legendId,
+        'aria-describedby': props.ariaDescribedBy
+      };
+    } else {
+      return {
+        ...baseProps,
+        'aria-label': props.ariaLabel || 'Toggle options',
+        'aria-labelledby': props.ariaLabelledBy,
+        'aria-describedby': props.ariaDescribedBy
+      };
+    }
+  };
+
   return (
-    <fieldset aria-label={props.ariaLabel} className={classNames}>
+    <fieldset {...getFieldsetProps()}>
+      {props.legend && (
+        <legend id={legendId} className={`${compPrefix}-legend`}>
+          {props.legend}
+        </legend>
+      )}
       <div className={`${compPrefix}-active-bg`} style={{ width: `${activeTabWidth}px`, left: `${activeTabLeftLocation}px` }} />
-      {props.options.map((option) => {
+      {props.options.map((option, index) => {
         const onChange = () => {
-          if (props.disabled) return;
+          if (props.disabled || option.disabled) return;
           props.onChange(option.value);
         };
+        
         const checked = option.value === props.value;
-
-        const onSpace = (e: React.KeyboardEvent) => {
-          if (e.key === ' ') {
-            e.preventDefault();
-            onChange();
-          }
-        };
+        const isDisabled = props.disabled || option.disabled;
+        const optionId = `${groupId}-option-${index}`;
 
         return (
-          <div ref={checked ? ref : null} key={option.value} className={`${compPrefix}-option-wrapper ${option.disabled && `${prefix}-disabled`}`}>
+          <div ref={checked ? ref : null} key={option.value} className={`${compPrefix}-option-wrapper ${isDisabled ? `${prefix}-disabled` : ''}`}>
             <input
+              id={optionId}
               className={`${compPrefix}-input`}
               type="radio"
-              id={option.value}
-              name={compPrefix}
+              name={groupId}
+              value={option.value}
               checked={checked}
-              disabled={props.disabled ?? option.disabled}
+              disabled={isDisabled}
               onChange={onChange}
+              aria-describedby={props.ariaDescribedBy}
             />
-            <label onKeyDown={onSpace} tabIndex={!(props.disabled ?? option.disabled) ? 0 : undefined} htmlFor={option.value} className={`${compPrefix}-option ${checked ? 'checked' : ''} ${!props.disabled ? `${prefix}-interactable` : ''}`}>
-              {option.prefix}
+            <label 
+              htmlFor={optionId} 
+              className={`${compPrefix}-option ${checked ? 'checked' : ''} ${!isDisabled ? `${prefix}-interactable` : ''}`}
+            >
+              {option.prefix && (
+                <span className={`${compPrefix}-prefix`} aria-hidden="true">
+                  {option.prefix}
+                </span>
+              )}
               <span className={`${compPrefix}-label`}>{option.label}</span>
-              {option.suffix}
+              {option.suffix && (
+                <span className={`${compPrefix}-suffix`} aria-hidden="true">
+                  {option.suffix}
+                </span>
+              )}
             </label>
           </div>
         );

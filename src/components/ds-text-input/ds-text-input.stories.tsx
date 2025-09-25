@@ -81,7 +81,9 @@ export const Default: Story = {
     }, [args.value]);
 
     return (
-      <DsTextInput {...args} value={value} onChange={setValue} />
+      <div style={{ width: '300px' }}>
+        <DsTextInput {...args} value={value} onChange={setValue} />
+      </div>
     );
   },
   name: 'Default',
@@ -102,7 +104,9 @@ export const PrefixAndSuffix: Story = {
     }, [args.value]);
 
     return (
-      <DsTextInput {...args} value={value} onChange={setValue} />
+      <div style={{ width: '300px' }}>
+        <DsTextInput {...args} value={value} onChange={setValue} />
+      </div>
     );
   },
   argTypes: {
@@ -133,7 +137,9 @@ export const Clearable: Story = {
     }, [args.value]);
 
     return (
-      <DsTextInput {...args} value={value} onChange={setValue} />
+      <div style={{ width: '300px' }}>
+        <DsTextInput {...args} value={value} onChange={setValue} />
+      </div>
     );
   },
   argTypes: {
@@ -158,11 +164,11 @@ export const Disabled: Story = {
     }, [args.value]);
 
     return (
-      <>
+      <div style={{ width: '300px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
         <DsTextInput {...args} value={value} onChange={setValue} />
         <DsTextInput {...args} value={value} onChange={setValue} prefix={<Smile size={16} />} suffix={<Smile size={16} />} />
         <DsTextInput {...args} value={value} onChange={setValue} label='Text' status={{ message: 'This is the message of this status', type: 'success' }} />
-      </>
+      </div>
     );
   },
   argTypes: {
@@ -187,7 +193,9 @@ export const LabelAndStatus: Story = {
     }, [args.value]);
 
     return (
-      <DsTextInput {...args} value={value} onChange={setValue} />
+      <div style={{ width: '300px' }}>
+        <DsTextInput {...args} value={value} onChange={setValue} />
+      </div>
     );
   },
   argTypes: {

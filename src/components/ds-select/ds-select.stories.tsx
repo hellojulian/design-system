@@ -77,7 +77,9 @@ export const Default: Story = {
     const [multiValue, setMultiValue] = React.useState<any>([args.value?.toString()]);
 
     return (
-      <DsSelect {...args} onChange={args.type === 'multi-value' ? setMultiValue : setValue} value={args.type === 'multi-value' ? multiValue : value} />
+      <div style={{ width: '300px' }}>
+        <DsSelect {...args} onChange={args.type === 'multi-value' ? setMultiValue : setValue} value={args.type === 'multi-value' ? multiValue : value} />
+      </div>
     );
   },
   name: 'Default',
@@ -101,7 +103,9 @@ export const NativeSelect: Story = {
     const [value, setValue] = React.useState<any>(args.value?.toString());
 
     return (
-      <DsSelect {...args} onChange={setValue} value={value} />
+      <div style={{ width: '300px' }}>
+        <DsSelect {...args} onChange={setValue} value={value} />
+      </div>
     );
   },
   argTypes: {
@@ -134,7 +138,9 @@ export const SingleSelectGrouped: Story = {
     const [value, setValue] = React.useState<any>(args.value?.toString());
 
     return (
-      <DsSelect {...args} onChange={setValue} value={value} />
+      <div style={{ width: '300px' }}>
+        <DsSelect {...args} onChange={setValue} value={value} />
+      </div>
     );
   },
   argTypes: {
@@ -160,7 +166,9 @@ export const MultiSelectGrouped: Story = {
     const [value, setValue] = React.useState<any>(args.value);
 
     return (
-      <DsSelect {...args} onChange={setValue} value={value} />
+      <div style={{ width: '300px' }}>
+        <DsSelect {...args} onChange={setValue} value={value} />
+      </div>
     );
   },
   argTypes: {
@@ -189,7 +197,9 @@ export const Disabled: Story = {
     const [multiValue, setMultiValue] = React.useState<any>([args.value?.toString()]);
 
     return (
-      <DsSelect {...args} onChange={args.type === 'multi-value' ? setMultiValue : setValue} value={args.type === 'multi-value' ? multiValue : value} />
+      <div style={{ width: '300px' }}>
+        <DsSelect {...args} onChange={args.type === 'multi-value' ? setMultiValue : setValue} value={args.type === 'multi-value' ? multiValue : value} />
+      </div>
     );
   },
   argTypes: {
@@ -226,7 +236,9 @@ export const CustomOptions: Story = {
     const [multiValue, setMultiValue] = React.useState<any>([args.value?.toString()]);
 
     return (
-      <DsSelect {...args} onChange={args.type === 'multi-value' ? setMultiValue : setValue} value={args.type === 'multi-value' ? multiValue : value} />
+      <div style={{ width: '300px' }}>
+        <DsSelect {...args} onChange={args.type === 'multi-value' ? setMultiValue : setValue} value={args.type === 'multi-value' ? multiValue : value} />
+      </div>
     );
   },
   argTypes: {

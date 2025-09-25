@@ -28,12 +28,12 @@
 .ds-stepper-container {
   display: flex;
   height: var(--ds-control-height-md);
-  justify-content: space-between;
   align-items: center;
   border-radius: var(--ds-radius-md);
   border: 1px solid var(--ds-disableable-color-divider-solid);
   background: var(--ds-disableable-color-background-base);
   overflow: hidden;
+  min-width: 120px;
 }
 
 .ds-stepper-minus-container {
@@ -54,8 +54,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-shrink: 1;
+  flex: 1;
   overflow: hidden;
+  min-width: 40px;
 }
 
 .ds-stepper-input {

@@ -18,14 +18,23 @@ export interface DsTextInputProps {
   status?: DsStatusMessageProps
   prefix?: JSX.Element
   suffix?: JSX.Element
+  type?: 'text' | 'email' | 'password' | 'search' | 'tel' | 'url'
+  required?: boolean
+  autoComplete?: string
+  maxLength?: number
+  minLength?: number
+  pattern?: string
 
   ariaLabel?: string
+  ariaLabelledBy?: string
+  ariaDescribedBy?: string
   className?: string
+  id?: string
 }
 
 export const DsTextInput = (props: DsTextInputProps) => {
   const [isActive, setIsActive] = React.useState(false);
-  const inputId = React.useMemo(() => `${compPrefix}-input-${Math.random().toString(36).substring(7)}`, []);
+  const inputId = props.id || React.useMemo(() => `${compPrefix}-input-${Math.random().toString(36).substring(7)}`, []);
   const labelId = React.useMemo(() => `${compPrefix}-label-${Math.random().toString(36).substring(7)}`, []);
   const statusId = React.useMemo(() => `${compPrefix}-status-${Math.random().toString(36).substring(7)}`, []);
   const clearButtonId = React.useMemo(() => `${compPrefix}-clear-${Math.random().toString(36).substring(7)}`, []);
@@ -44,38 +53,66 @@ export const DsTextInput = (props: DsTextInputProps) => {
     }
   );
 
+  // Determine ARIA labeling
+  const getAriaLabelledBy = () => {
+    if (props.ariaLabelledBy) return props.ariaLabelledBy;
+    if (props.label) return labelId;
+    return undefined;
+  };
+
   // Build aria-describedby list
   const getAriaDescribedBy = () => {
     const describedByIds = [];
+    if (props.ariaDescribedBy) describedByIds.push(props.ariaDescribedBy);
     if (props.status) describedByIds.push(statusId);
     return describedByIds.length > 0 ? describedByIds.join(' ') : undefined;
   };
 
+  // Determine if input is invalid
+  const isInvalid = props.status?.type === 'invalid';
+
   return (
     <div className={`${compPrefix}-wrapper ${props.className || ''}`}>
-      {props.label ? <label id={labelId} htmlFor={inputId} className={`${compPrefix}-label`}>{props.label}</label> : null}
-      {props.status ? <div id={statusId}><DsStatusMessage {...props.status} /></div> : null}
+      {props.label && (
+        <label id={labelId} htmlFor={inputId} className={`${compPrefix}-label`}>
+          {props.label}
+        </label>
+      )}
+      {props.status && (
+        <div id={statusId}>
+          <DsStatusMessage {...props.status} />
+        </div>
+      )}
       <div className={`${compPrefix}-container ${props.disabled ? `${prefix}-disabled` : ''}`}>
-        {props.prefix ? <div className={`${compPrefix}-prefix`}>{props.prefix}</div> : null}
+        {props.prefix && (
+          <div className={`${compPrefix}-prefix`} aria-hidden="true">
+            {props.prefix}
+          </div>
+        )}
         <div className={inputContainerClassNames}>
           <input
             id={inputId}
-            aria-labelledby={props.label ? labelId : undefined}
-            aria-label={props.ariaLabel}
-            aria-describedby={getAriaDescribedBy()}
-            aria-invalid={props.status?.variant === 'danger' ? 'true' : undefined}
-            type="text"
+            type={props.type || 'text'}
             value={props.value}
             onChange={(e) => { props.onChange(e.target.value); }}
             placeholder={props.placeholder}
             disabled={props.disabled}
+            required={props.required}
+            autoComplete={props.autoComplete}
+            maxLength={props.maxLength}
+            minLength={props.minLength}
+            pattern={props.pattern}
             className={`${compPrefix}-input`}
             onFocus={() => { setIsActive(true); }}
             onBlur={() => { setIsActive(false); }}
-            required={props.status?.variant === 'danger' ? true : undefined}
+            aria-label={props.ariaLabel}
+            aria-labelledby={getAriaLabelledBy()}
+            aria-describedby={getAriaDescribedBy()}
+            aria-invalid={isInvalid ? 'true' : 'false'}
+            aria-required={props.required ? 'true' : undefined}
           />
         </div>
-        {props.clearable ? (
+        {props.clearable && props.value && !props.disabled && (
           <DsButton 
             id={clearButtonId}
             disabled={props.disabled} 
@@ -87,8 +124,12 @@ export const DsTextInput = (props: DsTextInputProps) => {
             ariaLabel={`Clear ${props.label || 'input'}`}
             className={`${compPrefix}-clearable-icon-container`} 
           />
-        ) : null}
-        {props.suffix ? <div className={`${compPrefix}-suffix`}>{props.suffix}</div> : null}
+        )}
+        {props.suffix && (
+          <div className={`${compPrefix}-suffix`} aria-hidden="true">
+            {props.suffix}
+          </div>
+        )}
       </div>
     </div >
   );

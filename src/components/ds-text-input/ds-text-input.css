@@ -58,7 +58,7 @@
   outline: 2px solid;
   outline-color: var(--ds-color-state-focus);
   outline-offset: 0px;
-  border-radius: var(--ds-radius-md) !important;
+  border-radius: var(--ds-radius-sm) !important;
 }
 
 .ds-text-input-container:hover {
@@ -68,7 +68,7 @@
 .ds-text-input-container:hover .ds-text-input-input:focus-visible {
   outline: 2px solid;
   outline-color: var(--ds-color-state-focus);
-  border-radius: 8px !important;
+  border-radius: var(--ds-radius-sm) !important;
 }
 
 .ds-text-input-input::placeholder {
@@ -103,6 +103,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  color: var(--ds-color-foreground-default);
+}
+
+.ds-text-input-suffix svg,
+.ds-text-input-suffix [class*="ds-icon"] {
+  color: var(--ds-color-icon);
 }
 
 .ds-text-input-prefix {
@@ -110,4 +116,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  color: var(--ds-color-foreground-default);
+}
+
+.ds-text-input-prefix svg,
+.ds-text-input-prefix [class*="ds-icon"] {
+  color: var(--ds-color-icon);
 }
