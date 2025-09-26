@@ -10,9 +10,8 @@ export default create({
   fontBase: '"Inter Tight", sans-serif',
   fontCode: '"IBM Plex Mono", monospace',
 
-  brandTitle: 'Design System',
   brandUrl: 'https://www.figma.com/design/H183SNYASQn8z49YEbqRZj/Design-System?node-id=3782-13078&t=FwlQPmpcAZ1d2IMZ-1',
-  brandImage: '/Staute.png',
+  brandImage: '/sb-logo.png',
   brandTarget: '_self',
 
   //
