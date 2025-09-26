@@ -29,7 +29,7 @@
   justify-content: center;
   align-items: center;
   background: var(--ds-color-background-base);
-  color: var(--ds-color-background-white);
+  color: var(--ds-disableable-color-background-white);
 }
 
 .ds-checkbox-wrapper.checked .ds-checkbox {
@@ -38,5 +38,9 @@
 }
 
 .ds-checkbox [class*="ds-icon"] {
-  color: var(--ds-color-background-white);
+  color: var(--ds-disableable-color-background-white) !important;
+}
+
+.ds-checkbox svg {
+  color: var(--ds-disableable-color-background-white) !important;
 }
